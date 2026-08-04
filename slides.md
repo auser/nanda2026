@@ -156,7 +156,7 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
 -->
 ---
 ---
-<div class="eyebrow">05 · Verified reuse</div>
+<div class="eyebrow">06 · Verified reuse</div>
 
 ## What Compute Becomes
 
@@ -167,13 +167,13 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
   </div>
 
   <div class="address-formula">
-    <div class="block"><span class="bracket">[</span>Input<br>Address<span class="bracket">]</span></div>
+    <div class="block"><span class="bracket">[</span>Input Address<span class="bracket">]</span></div>
     <div class="op">+</div>
-    <div class="block"><span class="bracket">[</span>Function<br>Address<span class="bracket">]</span></div>
+    <div class="block"><span class="bracket">[</span>Function Address<span class="bracket">]</span></div>
     <div class="op">+</div>
-    <div class="block"><span class="bracket">[</span>Environment<br>Address<span class="bracket">]</span></div>
+    <div class="block"><span class="bracket">[</span>Environment Address<span class="bracket">]</span></div>
     <div class="op">=</div>
-    <div class="block"><span class="bracket">[</span>Result<br>Address<span class="bracket">]</span></div>
+    <div class="block"><span class="bracket">[</span>Result Address<span class="bracket">]</span></div>
   </div>
 
   <div class="formula-caption">Once sameness is recognized through object identity, systems stop copying, rebuilding, recomputing, and re-verifying from scratch. Compute moves by resolving closures—not copying whole machines.</div>
@@ -186,11 +186,53 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
 This flips the first question of computing. Instead of asking which server should run the job, ask where the verified result or its dependencies already exist, and what is actually missing. Inputs, functions, and environments can all be addressed. If the result already exists, verify and reuse it. If not, compute only the missing transformation and publish another address.
 -->
 ---
+layout: default
+class: math-slide
+---
+
+<div class="eyebrow">07 · From digest to address</div>
+
+## A digest enters. A stable address leaves.
+
+<div class="math-subtitle">A digest becomes a fixed-width label. The proof is in the positions.</div>
+
+<div class="math-label">1 · WRITE THE LABEL</div>
+
+$$
+\begin{aligned}
+\kappa(d) &= \underbrace{\texttt{"sha256:"}}_{7\ \text{ASCII bytes}}
+       \,\Vert\, \underbrace{\operatorname{hexLower}(d)}_{64\ \text{hex bytes}} \\
+|\kappa(d)| &= 7 + 2\cdot 32 = 71
+\end{aligned}
+$$
+
+<div class="math-note">71 bytes is part of the type: <span class="mono">Fin 71 → UInt8</span>.</div>
+
+<div class="math-label derivation-label">2 · READ IT IN ORDER</div>
+
+```lean4 {2-3}
+-- byte k contributes two hex positions
+let high := hexLower (digest k >>> 4)   -- 7 + 2*k
+let low  := hexLower (digest k &&& 0x0F) -- 8 + 2*k
+```
+
+<div class="math-note">Lean makes the story concrete: high nibble first, low nibble second.</div>
+
+<div class="math-conclusion"><span class="gold">Identity is preserved:</span> <span class="math-inline">κ(d₁) = κ(d₂) ⇔ d₁ = d₂</span> — same digest, same label; different digest, different label.</div>
+
+<div class="page-number">07</div>
+<!--
+0:20
+Start with a digest. Kappa writes `sha256:` and expands each byte into a high and low hex position, so every address is exactly 71 bytes. The Lean version makes that concrete: same digest, same label; different digest, different label.
+
+Source: UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean and KappaDerivation.lean.
+-->
+---
 ---
 
 <div class="routing-layout">
   <div class="routing-copy">
-    <div class="eyebrow">06 · Object routing</div>
+    <div class="eyebrow">08 · Object routing</div>
     <h2>Solving Compute Waste via Object Routing</h2>
     <p>Object identity lets the network reuse rather than repeat.</p>
     <div class="micro" style="margin-top:42px">Strongest for repeated, cacheable, portable, verifiable work.</div>
@@ -199,14 +241,14 @@ This flips the first question of computing. Instead of asking which server shoul
 </div>
 
 
-<div class="page-number">06</div>
+<div class="page-number">08</div>
 <!--
 0:45
 The efficiency comes from routing by object identity. The cache key is the object itself. Data deduplicates across consumers. Execution memoizes across identical inputs and environments. Workloads move as addresses and closures. The network can route by availability, capability, locality, policy, and cost instead of blindly sending every request to another server job.
 -->
 ---
 ---
-<div class="eyebrow">07 · A concrete proof pattern</div>
+<div class="eyebrow">09 · A concrete proof pattern</div>
 
 ## DataFacts
 
@@ -231,7 +273,7 @@ The efficiency comes from routing by object identity. The cache key is the objec
 </div>
 
 
-<div class="page-number">08</div>
+<div class="page-number">09</div>
 <!--
 0:45
 DataFacts is the concrete example of a viewer protocol above the registry. The registry retrieves the fact and its evidence objects. The DataFacts protocol tells the viewer how to answer three questions: is it current, is it authentic, and is this agent authorized to use it? The important shift is that evidence is verified before an agent acts or a payment settles.
@@ -242,19 +284,19 @@ title: Economic inversion
 
 <div class="econ-layout">
   <div class="econ-copy">
-    <div class="eyebrow">08 · The economic inversion</div>
-    <h2>Pay for Missing Work—Not Repeated Machines</h2>
-    <div class="claim">When state is portable and verifiable by construction, compute becomes a market for transformations rather than a lease on a server.</div>
-    <div class="callout">Reuse everything already known. Buy only the execution needed to produce the next verified object.</div>
+    <div class="eyebrow">10 · The economic inversion</div>
+    <h2>Reuse What Exists. Pay for What’s New.</h2>
+    <div class="claim">When state is portable and verifiable, compute becomes a market for transformations—not a lease on a server.</div>
+    <div class="callout">Reuse what is already verified. Pay only for the transformation that is missing.</div>
   </div>
   <img class="econ-art" src="/assets/economics.svg" alt="A qualitative chart showing fixed rented machine cost compared with falling object reuse cost." />
 </div>
 
 
-<div class="page-number">09</div>
+<div class="page-number">10</div>
 <!--
 0:40
-The economic consequence is qualitative but important. When state and results are portable objects, buyers do not need to rent the same machine shape for every workload. They can reuse the verified closure they already have and pay for only the missing transformation. That turns compute into a market for object execution rather than reserved machine time.
+The economic consequence is simple: reuse what is already verified and pay only for the transformation that is missing. Compute becomes a market for what changes—not a lease on the same machine.
 -->
 ---
 layout: default
@@ -268,7 +310,7 @@ class: synthesis
 <img class="synthesis-art" src="/assets/synthesis.svg" alt="Data, AI, apps, and compute exchanging addressed objects above the kappa-registry substrate in NandaTown." />
 
 
-<div class="page-number">10</div>
+<div class="page-number">11</div>
 <!--
 0:55
 This is the NandaTown version. NANDA resolves the actors and interaction context. UOR and Kappa resolve what those actors exchange: DataFacts, messages, models, codebooks, applications, and compute closures. Hologram materializes those object graphs into experiences. MVM produces missing results safely. The network is no longer pages linked by URLs; it is objects linked by meaning, proof, and permission.
@@ -282,7 +324,7 @@ class: quote-slide
 <div class="public-quote">“The agentic web will not be unlocked by giving agents more websites to browse.” It will be unlocked by giving them objects they can <span class="identify">identify</span>, <span class="verify">verify</span>, <span class="route">route</span>, <span class="transform">transform</span>, <span class="act">act on</span>.”</div>
 
 
-<div class="page-number">11</div>
+<div class="page-number">12</div>
 <!--
 0:35
 The public thesis is not that agents need a better browser for the existing web. They need objects with durable identity, evidence, permissions, and a resolution layer. That is what lets them safely identify, verify, route, transform, and act.
@@ -307,7 +349,7 @@ class: close-slide
 </div>
 
 
-<div class="page-number">12</div>
+<div class="page-number">13</div>
 <!--
 0:30
 That is the whole story: files become objects, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity. Kappa resolves objects. Hologram makes them usable. MVM safely produces what is missing. Thank you.
@@ -400,17 +442,3 @@ class: appendix-divider
 <div class="micro" style="position:absolute;left:66px;bottom:48px">ROADMAP: S3/etcd projections, Kaiju, governance kernel, semantic manifold.</div>
 
 <div class="page-number">A4</div>
-
----
-layout: two-cols
----
-
-# Math
-
-If all
-
-$$Q = (\mathrm{RO}, \mathrm{SO}, \mathrm{RQ}, \mathrm{SQ}) \in A^4,$$
-
-::right::
-
-things belong

@@ -8,11 +8,11 @@
     "dev": "slidev slides.md",
     "build": "slidev build slides.md",
     "build:pages": "slidev build slides.md --base \"${PAGES_BASE:-/}\" --router-mode hash",
-    "export:pdf": "mkdir -p dist && slidev export slides.md --format pdf --range 1-12 --with-clicks false --output dist/The-Object-Internet-NANDA.pdf",
+    "export:pdf": "mkdir -p dist && slidev export slides.md --format pdf --range 1-13 --with-clicks false --output dist/The-Object-Internet-NANDA.pdf",
     "export:pdf:full": "mkdir -p dist && slidev export slides.md --format pdf --with-clicks false --output dist/The-Object-Internet-NANDA-Full.pdf",
-    "export:pptx": "mkdir -p dist && slidev export slides.md --format pptx --range 1-12 --with-clicks false --output dist/The-Object-Internet-NANDA.pptx",
+    "export:pptx": "mkdir -p dist && slidev export slides.md --format pptx --range 1-13 --with-clicks false --output dist/The-Object-Internet-NANDA.pptx",
     "export:pptx:full": "mkdir -p dist && slidev export slides.md --format pptx --with-clicks false --output dist/The-Object-Internet-NANDA-Full.pptx",
-    "export:png": "mkdir -p dist && slidev export slides.md --format png --range 1-12 --with-clicks false --output dist"
+    "export:png": "mkdir -p dist && slidev export slides.md --format png --range 1-13 --with-clicks false --output dist"
   },
   "devDependencies": {
     "@slidev/cli": "52.18.0",

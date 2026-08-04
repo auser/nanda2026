@@ -1,8 +1,8 @@
 # The Object Internet — timed speaker script
 
-**Main talk:** slides 1–12. Slides after that are appendix.
+**Main talk:** slides 1–13. Slides after that are appendix.
 
-**Planned duration:** 8:30.
+**Planned duration:** 8:50.
 
 ## 1. The Object Internet — 0:25
 
@@ -28,26 +28,30 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
 
 This flips the first question of computing. Instead of asking which server should run the job, ask where the verified result or its dependencies already exist, and what is actually missing. Inputs, functions, and environments can all be addressed. If the result already exists, verify and reuse it. If not, compute only the missing transformation and publish another address.
 
-## 7. Solving Compute Waste via Object Routing — 0:45
+## 7. A digest enters. A stable address leaves. — 0:20
+
+Start with a digest. Kappa writes `sha256:` and expands each byte into a high and low hex position, so every address is exactly 71 bytes. The Lean version makes that concrete: same digest, same label; different digest, different label.
+
+## 8. Solving Compute Waste via Object Routing — 0:45
 
 The efficiency comes from routing by object identity. The cache key is the object itself. Data deduplicates across consumers. Execution memoizes across identical inputs and environments. Workloads move as addresses and closures. The network can route by availability, capability, locality, policy, and cost instead of blindly sending every request to another server job.
 
-## 8. DataFacts — 0:45
+## 9. DataFacts — 0:45
 
 DataFacts is the concrete example of a viewer protocol above the registry. The registry retrieves the fact and its evidence objects. The DataFacts protocol tells the viewer how to answer three questions: is it current, is it authentic, and is this agent authorized to use it? The important shift is that evidence is verified before an agent acts or a payment settles.
 
-## 9. Pay for Missing Work—Not Repeated Machines — 0:40
+## 10. Reuse What Exists. Pay for What’s New. — 0:40
 
-The economic consequence is qualitative but important. When state and results are portable objects, buyers do not need to rent the same machine shape for every workload. They can reuse the verified closure they already have and pay for only the missing transformation. That turns compute into a market for object execution rather than reserved machine time.
+The economic consequence is simple: reuse what is already verified and pay only for the transformation that is missing. Compute becomes a market for what changes—not a lease on the same machine.
 
-## 10. Synthesis: The Agentic Network Stack — 0:55
+## 11. Synthesis: The Agentic Network Stack — 0:55
 
 This is the NandaTown version. NANDA resolves the actors and interaction context. UOR and Kappa resolve what those actors exchange: DataFacts, messages, models, codebooks, applications, and compute closures. Hologram materializes those object graphs into experiences. MVM produces missing results safely. The network is no longer pages linked by URLs; it is objects linked by meaning, proof, and permission.
 
-## 11. The Public Thesis — 0:35
+## 12. The Public Thesis — 0:35
 
 The public thesis is not that agents need a better browser for the existing web. They need objects with durable identity, evidence, permissions, and a resolution layer. That is what lets them safely identify, verify, route, transform, and act.
 
-## 12. Build the internet agents can actually reason over. — 0:30
+## 13. Build the internet agents can actually reason over. — 0:30
 
 That is the whole story: files become objects, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity. Kappa resolves objects. Hologram makes them usable. MVM safely produces what is missing. Thank you.

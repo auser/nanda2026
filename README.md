@@ -35,7 +35,7 @@ The timed PowerPoint export is uploaded with the site and will be downloadable a
 
 <https://auser.github.io/nanda2026/The-Object-Internet-NANDA.pptx>
 
-## Export the timed 12-slide talk
+## Export the timed 13-slide talk
 
 ```bash
 npm run export:pdf
