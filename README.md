@@ -17,6 +17,20 @@ npm install
 npm run dev
 ```
 
+## Publish to GitHub Pages
+
+This repository includes a GitHub Actions workflow that builds the deck and deploys it to GitHub Pages whenever `main` changes. It uses Slidev's hash router and derives the project-page base path from the repository name, so the published assets work under `/nanda2026/`.
+
+Enable **Settings → Pages → Source → GitHub Actions** once, then push to `main`. The site will be available at:
+
+<https://auser.github.io/nanda2026/>
+
+To test the Pages build locally:
+
+```bash
+PAGES_BASE=/nanda2026/ pnpm run build:pages
+```
+
 ## Export the timed 12-slide talk
 
 ```bash

@@ -80,6 +80,9 @@ The foundational mismatch is that agents are asked to act on meaning, while the 
 The reframe is from a file-oriented internet to an object-oriented one. Instead of fetching and scraping, agents resolve and verify. Instead of location names, they exchange structural addresses. Instead of every app maintaining its own copies and caches, the network can recognize shared object identity.
 -->
 ---
+title: Architecture of meaning
+---
+
 <div class="quicktime-layout">
   <div class="left-copy">
     <div class="eyebrow">03 · The architecture of meaning</div>
@@ -113,6 +116,7 @@ The reframe is from a file-oriented internet to an object-oriented one. Instead 
 Think about QuickTime. It understands the container, codecs, tracks, and timeline, but it does not need to know which disk block, CDN node, or cache contains the next segment. It asks the operating system for data and reconstructs the experience. Hologram generalizes that boundary. The viewer knows the root object and the protocol that explains it. Kappa-registry gets the verified object closure. Where those objects live is below the viewer.
 -->
 ---
+---
 <div class="eyebrow">04 · From standard to substrate</div>
 
 ## The Stack That Makes It Real
@@ -120,29 +124,29 @@ Think about QuickTime. It understands the container, codecs, tracks, and timelin
 <div class="subtitle">Each layer has one job. The story is credible because those jobs are not collapsed.</div>
 
 <div class="stack">
-  <div class="stack-layer" v-click>
+  <div class="stack-layer">
     <div class="name">UOR Foundation</div>
     <div class="desc">Defines objects, structural addresses, provenance, profiles, and conformance.</div>
     <div class="role">[ THE STANDARDS ]</div>
   </div>
-  <div class="stack-layer" v-click>
+  <div class="stack-layer">
     <div class="name">Hologram</div>
     <div class="desc">The browser and viewer for the Object Internet; builds, runs, and shares Holospaces.</div>
     <div class="role">[ THE EXPERIENCE ]</div>
   </div>
-  <div class="stack-layer" v-click>
+  <div class="stack-layer">
     <div class="name">MVM / MVMD</div>
     <div class="desc">Isolation, signed plans, freshness, ordering, and auditable missing execution.</div>
     <div class="role">[ SAFE EXECUTION ]</div>
   </div>
-  <div class="stack-layer kappa" v-click>
+  <div class="stack-layer kappa">
     <div class="name">kappa-registry</div>
     <div class="desc">The content-addressed registry substrate: persistent objects, relationships, proofs, and resolution.</div>
     <div class="role">[ THE SUBSTRATE ]</div>
   </div>
 </div>
 
-<div class="stack-status">SHIPPED: KAPPA REGISTRY SUBSTRATE · ROADMAP: CLOUD PROJECTIONS ABOVE IT</div>
+<div class="stack-status">Powered by uor-foundation and mvm</div>
 
 
 <div class="page-number">05</div>
@@ -150,6 +154,7 @@ Think about QuickTime. It understands the container, codecs, tracks, and timelin
 0:50
 This is the stack. UOR defines object identity and protocol vocabulary. Hologram is the viewer and experience. MVM safely executes only what is missing. Kappa-registry is the substrate that resolves and verifies the object graph. Important boundary: Kappa is the shipped registry substrate—OCI store, typed signed edges, identity and absence proofs, epoch-chained audit, encryption, and Veilid federation. S3 and etcd projections, Kaiju, the governance kernel, and the semantic manifold are roadmap, not today's public API surface.
 -->
+---
 ---
 <div class="eyebrow">05 · Verified reuse</div>
 
@@ -161,7 +166,7 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
     <div class="new"><strong>New question:</strong> Where does this verified object already exist—and what is missing?</div>
   </div>
 
-  <div class="address-formula" v-click>
+  <div class="address-formula">
     <div class="block"><span class="bracket">[</span>Input<br>Address<span class="bracket">]</span></div>
     <div class="op">+</div>
     <div class="block"><span class="bracket">[</span>Function<br>Address<span class="bracket">]</span></div>
@@ -171,7 +176,7 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
     <div class="block"><span class="bracket">[</span>Result<br>Address<span class="bracket">]</span></div>
   </div>
 
-  <div class="formula-caption" v-click>Once sameness is recognized through object identity, systems stop copying, rebuilding, recomputing, and re-verifying from scratch. Compute moves by resolving closures—not copying whole machines.</div>
+  <div class="formula-caption">Once sameness is recognized through object identity, systems stop copying, rebuilding, recomputing, and re-verifying from scratch. Compute moves by resolving closures—not copying whole machines.</div>
 </div>
 
 
@@ -181,6 +186,8 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
 This flips the first question of computing. Instead of asking which server should run the job, ask where the verified result or its dependencies already exist, and what is actually missing. Inputs, functions, and environments can all be addressed. If the result already exists, verify and reuse it. If not, compute only the missing transformation and publish another address.
 -->
 ---
+---
+
 <div class="routing-layout">
   <div class="routing-copy">
     <div class="eyebrow">06 · Object routing</div>
@@ -192,11 +199,12 @@ This flips the first question of computing. Instead of asking which server shoul
 </div>
 
 
-<div class="page-number">07</div>
+<div class="page-number">06</div>
 <!--
 0:45
 The efficiency comes from routing by object identity. The cache key is the object itself. Data deduplicates across consumers. Execution memoizes across identical inputs and environments. Workloads move as addresses and closures. The network can route by availability, capability, locality, policy, and cost instead of blindly sending every request to another server job.
 -->
+---
 ---
 <div class="eyebrow">07 · A concrete proof pattern</div>
 
@@ -206,15 +214,15 @@ The efficiency comes from routing by object identity. The cache key is the objec
 
 <div class="facts-layout">
   <div class="facts-copy">
-    <div class="fact-q" v-click>
+    <div class="fact-q">
       <h3>Is it Current?</h3>
       <p>signed timestamp + append-only log</p>
     </div>
-    <div class="fact-q" v-click>
+    <div class="fact-q">
       <h3>Is it Authentic?</h3>
       <p>structural content address</p>
     </div>
-    <div class="fact-q" v-click>
+    <div class="fact-q">
       <h3>Is it Authorized?</h3>
       <p>capability chain + revocation checks</p>
     </div>
@@ -229,6 +237,9 @@ The efficiency comes from routing by object identity. The cache key is the objec
 DataFacts is the concrete example of a viewer protocol above the registry. The registry retrieves the fact and its evidence objects. The DataFacts protocol tells the viewer how to answer three questions: is it current, is it authentic, and is this agent authorized to use it? The important shift is that evidence is verified before an agent acts or a payment settles.
 -->
 ---
+title: Economic inversion
+---
+
 <div class="econ-layout">
   <div class="econ-copy">
     <div class="eyebrow">08 · The economic inversion</div>
@@ -250,7 +261,7 @@ layout: default
 class: synthesis
 ---
 <div class="synthesis-title-strip">
-  <h2>Synthesis: The Agentic Network Stack</h2>
+  <h2>The Agentic Network Stack</h2>
   <div class="subtitle">Not pages linked by URLs. Objects linked by meaning, proof, and permission.</div>
 </div>
 
@@ -283,9 +294,9 @@ class: close-slide
 <h1>Build the internet agents<br>can actually reason over.</h1>
 
 <div class="transform-list">
-  <div class="transform-line" v-click><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
-  <div class="transform-line" v-click><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
-  <div class="transform-line" v-click><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
+  <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
+  <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
+  <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
 </div>
 
 <div class="stack-cards">
@@ -301,6 +312,16 @@ class: close-slide
 0:30
 That is the whole story: files become objects, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity. Kappa resolves objects. Hologram makes them usable. MVM safely produces what is missing. Thank you.
 -->
+
+---
+layout: default
+class: text-left
+---
+
+# Thank you
+
+<div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> and <a href="https://runmvm.com/" id="ref">MVM</a> teams</div>
+
 ---
 layout: center
 class: appendix-divider
@@ -338,7 +359,7 @@ class: appendix-divider
 ## Kappa: Shipped Substrate vs. Roadmap Thesis
 
 <div class="status-layout">
-  <div class="status-column shipped" v-click>
+  <div class="status-column shipped">
     <span class="badge">Shipped substrate</span>
     <h3>kappa-registry</h3>
     <ul>
@@ -349,7 +370,7 @@ class: appendix-divider
       <li>Encryption and Veilid federation</li>
     </ul>
   </div>
-  <div class="status-column roadmap-col" v-click>
+  <div class="status-column roadmap-col">
     <span class="badge gold-badge">Roadmap thesis</span>
     <h3>Cloud projections above Kappa</h3>
     <ul>

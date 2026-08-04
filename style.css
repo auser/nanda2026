@@ -19,6 +19,18 @@
   --mono: "SFMono-Regular", "Cascadia Mono", "Liberation Mono", monospace;
 }
 
+html,
+body,
+#app,
+.slidev-app,
+.slidev-page,
+.slidev-page-content,
+.slidev-slide-container,
+.slidev-slides,
+.slidev-layout {
+  background-color: #060708 !important;
+}
+
 .slidev-layout,
 .slidev-layout * {
   box-sizing: border-box;

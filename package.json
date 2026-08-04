@@ -3,9 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "slidev slides.md",
     "build": "slidev build slides.md",
+    "build:pages": "slidev build slides.md --base \"${PAGES_BASE:-/}\" --router-mode hash",
     "export:pdf": "mkdir -p dist && slidev export slides.md --format pdf --range 1-12 --with-clicks false --output dist/The-Object-Internet-NANDA.pdf",
     "export:pdf:full": "mkdir -p dist && slidev export slides.md --format pdf --with-clicks false --output dist/The-Object-Internet-NANDA-Full.pdf",
     "export:pptx": "mkdir -p dist && slidev export slides.md --format pptx --range 1-12 --with-clicks false --output dist/The-Object-Internet-NANDA.pptx",
