@@ -8,7 +8,6 @@ info: |
   and computing by verifiable object identity.
 aspectRatio: 16/9
 canvasWidth: 1600
-# transition: fade-out
 presenter: true
 download: false
 exportFilename: The-Object-Internet-NANDA
