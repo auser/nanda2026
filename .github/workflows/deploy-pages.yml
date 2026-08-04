@@ -44,6 +44,12 @@ jobs:
         env:
           PAGES_BASE: /${{ github.event.repository.name }}/
 
+      - name: Install Chromium for Slidev export
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Export timed PPTX
+        run: pnpm run export:pptx
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

@@ -31,6 +31,10 @@ To test the Pages build locally:
 PAGES_BASE=/nanda2026/ pnpm run build:pages
 ```
 
+The timed PowerPoint export is uploaded with the site and will be downloadable at:
+
+<https://auser.github.io/nanda2026/The-Object-Internet-NANDA.pptx>
+
 ## Export the timed 12-slide talk
 
 ```bash

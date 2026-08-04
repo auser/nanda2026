@@ -324,6 +324,13 @@ class: text-left
 
 ---
 layout: center
+---
+
+
+$$Q = (\mathrm{RO}, \mathrm{SO}, \mathrm{RQ}, \mathrm{SQ}) \in A^4,$$
+
+---
+layout: center
 class: appendix-divider
 ---
 # Addendum
