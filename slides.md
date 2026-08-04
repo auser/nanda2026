@@ -324,16 +324,11 @@ class: text-left
 
 ---
 layout: center
----
-
-
-$$Q = (\mathrm{RO}, \mathrm{SO}, \mathrm{RQ}, \mathrm{SQ}) \in A^4,$$
-
----
-layout: center
 class: appendix-divider
 ---
+
 # Addendum
+
 ---
 <div class="eyebrow">A1 · Why today's stack is brittle</div>
 
@@ -405,3 +400,17 @@ class: appendix-divider
 <div class="micro" style="position:absolute;left:66px;bottom:48px">ROADMAP: S3/etcd projections, Kaiju, governance kernel, semantic manifold.</div>
 
 <div class="page-number">A4</div>
+
+---
+layout: two-cols
+---
+
+# Math
+
+If all
+
+$$Q = (\mathrm{RO}, \mathrm{SO}, \mathrm{RQ}, \mathrm{SQ}) \in A^4,$$
+
+::right::
+
+things belong

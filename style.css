@@ -767,13 +767,15 @@ body,
 }
 
 .slidev-layout.appendix-divider {
-  background-color: #f5f5f5 !important;
+  background-color: #000000 !important;
   background-image: none !important;
   color: #111 !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+
 
 .slidev-layout.appendix-divider::before,
 .slidev-layout.appendix-divider::after {
@@ -782,7 +784,7 @@ body,
 
 .slidev-layout.appendix-divider h1 {
   color: #111;
-  font-size: 54px;
+  font-size: 5rem;
   letter-spacing: -1px;
   font-weight: 500;
 }
@@ -933,4 +935,8 @@ body,
 .slidev-layout .slidev-vclick-hidden {
   opacity: 0;
   transform: translateY(8px);
+}
+
+.addendum {
+  border: 10px solid red;
 }
