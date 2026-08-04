@@ -16,6 +16,7 @@ defaults:
   layout: default
 layout: default
 class: hero
+favicon: "https://gethologram.ai/favicon.ico"
 ---
 <div class="hero-copy">
   <h1>The Object Internet</h1>
