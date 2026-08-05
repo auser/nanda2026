@@ -95,7 +95,7 @@ title: Architecture of meaning
     <p>It asks for a verified object. The registry finds the bytes.</p>
   </div>
 
-  <img class="quicktime-art" src="/assets/quicktime.svg" alt="A Hologram viewer requesting addressed objects from kappa-registry." />
+  <img class="quicktime-art" src="/assets/view.png" alt="A Hologram viewer requesting addressed objects from kappa-registry." />
 
   <div class="quicktime-notes">
     <div class="quicktime-note">
@@ -130,6 +130,9 @@ layout: default
 <div class="subtitle">Standards define identity. The viewer creates meaning. The substrate resolves objects. Execution fills the gaps.</div>
 
 <div class="stack">
+<img src="./assets/stack.png" alt="">
+</div>
+<!-- <div class="stack">
   <div class="stack-layer">
     <div class="name">UOR Foundation</div>
     <div class="desc">Defines objects, structural addresses, provenance, profiles, and conformance.</div>
@@ -150,7 +153,7 @@ layout: default
     <div class="desc">The content-addressed registry substrate: persistent objects, relationships, proofs, and resolution.</div>
     <div class="role">[ THE SUBSTRATE ]</div>
   </div>
-</div>
+</div> -->
 
 <div class="stack-status">Powered by uor-foundation and mvm</div>
 
@@ -355,7 +358,7 @@ layout: default
       <p>capability chain + revocation checks</p>
     </div>
   </div>
-  <img class="facts-art" src="/assets/datafacts.svg" alt="A DataFact object surrounded by current, authentic, and authorized proof petals." />
+  <img class="facts-art" src="/assets/confirm.png" alt="A DataFact object surrounded by current, authentic, and authorized proof petals." />
 </div>
 
 
@@ -375,7 +378,7 @@ layout: default
     <div class="claim">When state is portable and verifiable, compute becomes a market for transformations—not a lease on a server.</div>
     <div class="callout">Reuse what is already verified. Pay only for the transformation that is missing.</div>
   </div>
-  <img class="econ-art" src="/assets/economics.svg" alt="A qualitative chart showing fixed rented machine cost compared with falling object reuse cost." />
+  <img class="econ-art" src="/assets/economics.png" alt="A qualitative chart showing fixed rented machine cost compared with falling object reuse cost." />
 </div>
 
 
@@ -393,7 +396,7 @@ class: synthesis
   <div class="subtitle">Actors, facts, models, apps, and compute closures share one identity layer.</div>
 </div>
 
-<img class="synthesis-art" src="/assets/synthesis.svg" alt="Data, AI, apps, and compute exchanging addressed objects above the kappa-registry substrate in NandaTown." />
+<img class="synthesis-art" src="/assets/synthesis.png" alt="Data, AI, apps, and compute exchanging addressed objects above the kappa-registry substrate in NandaTown." />
 
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
