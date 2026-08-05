@@ -443,12 +443,15 @@ Here is the shift: files become objects, locations become addresses, endpoints b
 
 ---
 layout: default
-class: text-left
+class: thank-you-slide
 ---
 
-# Thank you
+<div class="thank-you-copy">
+  <h1>Thank you</h1>
+  <div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
+</div>
 
-<div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
+<img class="team-photo" src="/assets/team.jpeg" alt="The Hologram team gathered together outdoors." />
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 

@@ -937,6 +937,39 @@ body,
   text-align: center;
 }
 
+.thank-you-slide {
+  padding: 72px 85px 58px;
+  display: grid;
+  grid-template-columns: minmax(380px, .72fr) minmax(760px, 1.28fr);
+  gap: 58px;
+  align-items: center;
+}
+
+.thank-you-copy {
+  align-self: center;
+  padding-bottom: 34px;
+}
+
+.thank-you-copy h1 {
+  margin: 0 0 22px;
+  font-size: 72px;
+}
+
+.thank-you-copy .subtitle {
+  max-width: 410px;
+  font-size: 25px;
+}
+
+.team-photo {
+  width: 100%;
+  height: 570px;
+  display: block;
+  object-fit: cover;
+  object-position: center 58%;
+  border: 1px solid rgba(179, 193, 207, .32);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .28);
+}
+
 .transform-list {
   width: 920px;
   margin: 0 auto 40px;
