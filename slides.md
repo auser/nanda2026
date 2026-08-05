@@ -29,7 +29,8 @@ favicon: "https://gethologram.ai/favicon.ico"
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-Math... but not too much...
+
+Hey I'm Ari, and now let's work with math... but not too much...
 
 Imagine an agent about to pay for a fact. It has a URL or a JSON payload—but can it tell what the thing is, whether it is current, and whether it is allowed to use it? That is the problem UOR and Hologram set out to solve. Agents do not need more pages. They need objects with identity they can trust.
 -->
