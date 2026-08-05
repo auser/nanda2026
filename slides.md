@@ -132,7 +132,7 @@ layout: default
 <div class="subtitle">Standards define identity. The viewer creates meaning. The substrate resolves objects. Execution fills the gaps.</div>
 
 <div class="stack">
-<img src="./assets/stack.png" alt="">
+<img src="/assets/stack.png" alt="">
 </div>
 <!-- <div class="stack">
   <div class="stack-layer">
