@@ -19,7 +19,7 @@ favicon: "https://gethologram.ai/favicon.ico"
 ---
 <div class="hero-copy">
   <h1>The Object Internet</h1>
-  <div class="subtitle">Building the internet agents<br>can actually <b class="blue">reason</b> over.</div>
+  <div class="subtitle">Agents don't need more pages.<br>They need objects they can <b class="blue">trust</b>.</div>
 </div>
 
 <img class="hero-art" src="/assets/hero-network.svg" alt="A geometric object network surrounding a stable central identity." />
@@ -27,17 +27,19 @@ favicon: "https://gethologram.ai/favicon.ico"
 <div class="hero-tag">NANDA × UOR</div>
 
 
-<div class="page-number">01</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:25
-I want to propose a different foundation for the agentic web: not more pages for agents to browse, but an internet of objects they can identify, verify, route, transform, and act on. The core idea is simple: separate what an object means from where its bytes happen to live.
+Imagine an agent about to pay for a fact. It has a URL or a JSON payload—but can it tell what the thing is, whether it is current, and whether it is allowed to use it? That is the problem I want to solve. Agents do not need more pages. They need objects with identity they can trust.
 -->
 ---
-<div class="eyebrow">02 · The foundational mismatch</div>
+layout: default
+---
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · The foundational mismatch</div>
 
-## Agents are asked to act on meaning.
+## Agents have to act on meaning.
 
-<div class="subtitle">The internet mostly gives them files. Agents do not just read information—they delegate it, transform it, pay against it, train on it, and pass it to other agents.</div>
+<div class="subtitle">But the web hands them files. Before an agent acts, it needs to know what the thing is, whether it is current, and whether it may use it.</div>
 
 <div style="height: 25px"></div>
 
@@ -46,17 +48,20 @@ I want to propose a different foundation for the agentic web: not more pages for
 <div class="micro" style="position:absolute;left:66px;bottom:53px">A file rarely tells an agent what object it represents, whether it is current, or who has permission to use it.</div>
 
 
-<div class="page-number">02</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:45
-The foundational mismatch is that agents are asked to act on meaning, while the internet mostly gives them files, API payloads, URLs, and logs. A file can carry bytes, but it rarely carries the durable answers an agent needs: what object is this, is it current, where did it come from, and may this agent use it?
+The mismatch is that agents do more than read. They reuse information, transform it, pay against it, and pass it to other agents. A file carries bytes, but it rarely carries the durable answers: what object is this, is it current, where did it come from, and may this agent use it? Until those answers travel with the thing, acting on meaning is guesswork. So we need to change what the network treats as its basic unit.
 -->
 ---
-<div class="eyebrow">03 · The conceptual shift</div>
+layout: default
+class: shift-slide
+---
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · The conceptual shift</div>
 
-## Files vs. Objects
+## The web gives agents files.<br>They need objects.
 
-<div class="subtitle">The shift is not cosmetic. It changes what agents can safely know and do.</div>
+<div class="subtitle">An object carries identity, proof, and a way to resolve it.</div>
 
 <div class="shift-grid">
   <div class="shift-head">
@@ -74,10 +79,10 @@ The foundational mismatch is that agents are asked to act on meaning, while the 
 </div>
 
 
-<div class="page-number">03</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:40
-The reframe is from a file-oriented internet to an object-oriented one. Instead of fetching and scraping, agents resolve and verify. Instead of location names, they exchange structural addresses. Instead of every app maintaining its own copies and caches, the network can recognize shared object identity.
+The reframe is straightforward: move from files to objects. Fetch becomes resolve. Scrape becomes verify. A URL says where to look; a structural address says what to look for. When the network recognizes the same object everywhere, agents can share one verified thing instead of making another copy. The next question is where meaning belongs in that system.
 -->
 ---
 title: Architecture of meaning
@@ -85,9 +90,9 @@ title: Architecture of meaning
 
 <div class="quicktime-layout">
   <div class="left-copy">
-    <div class="eyebrow">04 · The architecture of meaning</div>
-    <h2>The QuickTime<br>Analogy</h2>
-    <p>The viewer renders the experience. The substrate guarantees retrieval and integrity.</p>
+    <div class="eyebrow">{{ String($page).padStart(2, '0') }} · The architecture of meaning</div>
+    <h2>The viewer<br>owns meaning.</h2>
+    <p>It asks for a verified object. The registry finds the bytes.</p>
   </div>
 
   <img class="quicktime-art" src="/assets/quicktime.svg" alt="A Hologram viewer requesting addressed objects from kappa-registry." />
@@ -110,18 +115,19 @@ title: Architecture of meaning
 </div>
 
 
-<div class="page-number">04</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:55
-Think about QuickTime. It understands the container, codecs, tracks, and timeline, but it does not need to know which disk block, CDN node, or cache contains the next segment. It asks the operating system for data and reconstructs the experience. Hologram generalizes that boundary. The viewer knows the root object and the protocol that explains it. Kappa-registry gets the verified object closure. Where those objects live is below the viewer.
+That question gives us the boundary shown here. QuickTime understands a movie—its tracks, codecs, and timeline—but it does not manage disk blocks. It asks the operating system for the next verified bytes. Hologram plays the same role for addressed objects: the viewer owns the meaning, while kappa-registry resolves the verified object closure. Storage location stays below the boundary, so the experience can remain focused on what the object means.
 -->
 ---
+layout: default
 ---
-<div class="eyebrow">05 · From standard to substrate</div>
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · From standard to substrate</div>
 
-## The Stack That Makes It Real
+## Four layers.<br>One boundary.
 
-<div class="subtitle">Each layer has one job. The story is credible because those jobs are not collapsed.</div>
+<div class="subtitle">Standards define identity. The viewer creates meaning. The substrate resolves objects. Execution fills the gaps.</div>
 
 <div class="stack">
   <div class="stack-layer">
@@ -149,21 +155,22 @@ Think about QuickTime. It understands the container, codecs, tracks, and timelin
 <div class="stack-status">Powered by uor-foundation and mvm</div>
 
 
-<div class="page-number">05</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:50
-This is the stack. UOR defines object identity and protocol vocabulary. Hologram is the viewer and experience. MVM safely executes only what is missing. Kappa-registry is the substrate that resolves and verifies the object graph. Important boundary: Kappa is the shipped registry substrate—OCI store, typed signed edges, identity and absence proofs, epoch-chained audit, encryption, and Veilid federation. S3 and etcd projections, Kaiju, the governance kernel, and the semantic manifold are roadmap, not today's public API surface.
+Four layers make that boundary real. UOR defines identity and the vocabulary for objects. Hologram turns addressed objects into an experience. Kappa-registry resolves and verifies the graph. MVM runs only the work that is genuinely missing. Each layer has one job: meaning above, resolution below, and execution only where needed. With that separation in place, compute can ask a better first question.
 -->
 ---
+layout: default
 ---
-<div class="eyebrow">06 · Verified reuse</div>
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · Verified reuse</div>
 
-## What Compute Becomes
+## Compute starts with<br>what already exists.
 
 <div class="formula-wrap">
   <div class="old-new">
     <div class="old"><strong>Old question:</strong> Which server should run this?</div>
-    <div class="new"><strong>New question:</strong> Where does this verified object already exist—and what is missing?</div>
+    <div class="new"><strong>New question:</strong> What has already been verified—and what is missing?</div>
   </div>
 
   <div class="address-formula">
@@ -179,7 +186,7 @@ This is the stack. UOR defines object identity and protocol vocabulary. Hologram
   <div class="formula-caption">Once sameness is recognized through object identity, systems stop copying, rebuilding, recomputing, and re-verifying from scratch. Compute moves by resolving closures—not copying whole machines.</div>
 </div>
 
-<div class="math-proof-label">THE REUSE TEST</div>
+<div class="math-proof-label mt-10">THE REUSE TEST</div>
 
 $$
 \operatorname{address}(x)=\operatorname{address}(y)
@@ -188,23 +195,23 @@ $$
 $$
 
 
-<div class="page-number">06</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:45
-Start with the old question: which server should run this job? The object network asks a better question: where does the verified result—or the inputs, function, and environment it depends on—already exist? If the closure is already there, resolve and reuse it. If one piece is missing, compute only that piece and publish its new address. The system moves from renting a machine to finding what is already true.
+Instead of asking which server should run a job, ask what has already been verified. If the inputs, function, environment, or result already exist, resolve and reuse them. If one piece is missing, compute only that piece and publish its new address. In other words, compute becomes finding what is already true, then filling the gap. For that reuse to work, content needs a stable name.
 -->
 ---
 layout: default
 class: math-slide
 ---
 
-<div class="eyebrow">07 · From content to address</div>
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · From content to address</div>
 
-## Content maps to a stable κ-label.
+## Give content a stable name.
 
-<div class="math-subtitle">Canonical content → digest → address. The label is the result.</div>
+<div class="math-subtitle">Canonical content → digest → κ-label. No location required.</div>
 
-<div class="math-label">1 · MAP CONTENT → WRITE THE LABEL</div>
+<div class="math-label">1 · CONTENT → κ-LABEL</div>
 
 $$
 \begin{aligned}
@@ -236,24 +243,24 @@ $$
 
 <div class="math-conclusion"><span class="gold">Identity is preserved:</span> <span class="math-inline">κ(d₁) = κ(d₂) ⇔ d₁ = d₂</span> — same digest, same label; different digest, different label.</div>
 
-<div class="page-number">07</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:20
-Now we can give that object a name. We do not start with a bare digest; we start with content. Canonical bytes produce a 32-byte digest, and κ turns those bytes into the fixed-width `sha256:` label. Because every byte becomes an injective pair of hex digits, equal labels force equal digests. The address is not a hint about where the content lives—it is the content's stable identity. The next slide makes that mapping concrete.
+That stable name is the κ-label. Canonical bytes produce a 32-byte digest; κ turns those bytes into a fixed-width `sha256:` address. Every digest byte becomes an injective pair of hex digits, so equal labels imply equal content identity. It names the object itself, not the place where the object happens to live. The next slide puts that claim through a concrete round trip.
 
 Source: UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean and KappaDerivation.lean.
 -->
 ---
+layout: default
 ---
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · One object, one address</div>
 
-<div class="eyebrow">08 · One object, one address</div>
+## Make it. Find it.<br>Get the same object back.
 
-## Make the address. Find the object. Get the same address.
-
-<div class="math-subtitle">Canonicalize once, resolve by κ-label, and verify the round trip.</div>
+<div class="math-subtitle">Same message, different JSON order, same stable address.</div>
 
 <div class="object-address-example object-roundtrip-example">
-  <div class="address-example-label">WORKED OBJECT · canonical bytes shown compactly</div>
+  <div class="address-example-label">WORKED EXAMPLE · same content, different order</div>
   <div class="object-address-flow">
     <div class="object-flow-stage">
       <div class="object-flow-label">1 · OBJECT₁</div>
@@ -300,39 +307,38 @@ $$
 
 <div class="math-conclusion object-roundtrip-conclusion"><span class="gold">The point:</span> the content is the addressable object; lookup retrieves it without changing its identity.</div>
 
-<div class="page-number">08</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:35
-Here is the loop. A message object is canonicalized, hashed, and given the address in the middle. Resolve that address and the message comes back with the same fields, even though the JSON keys are shown in a different order. Canonicalization removes that representational difference, so re-addressing the result gives the same κ-label. That is the payoff: the network can route, verify, and reuse the object without confusing a new representation for a new thing.
-
-The exact κ construction is pinned by UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean, HexEncoding.lean, and KappaDerivation.lean.
+Here is the round trip. We start with a message, canonicalize it, hash it, and assign the κ-address in the middle. Canonicalization removes the representational difference, so both forms receive the same address. That is the payoff: the network can reuse the object without mistaking a new representation for a new thing.
 -->
 ---
+layout: default
 ---
-
 <div class="routing-layout">
   <div class="routing-copy">
-    <div class="eyebrow">09 · Object routing</div>
-    <h2>Solving Compute Waste via Object Routing</h2>
-    <p>Object identity lets the network reuse rather than repeat.</p>
+    <div class="eyebrow">{{ String($page).padStart(2, '0') }} · Routing by identity</div>
+    <h2>An address becomes<br>a routing decision.</h2>
+    <p>Resolve what is already verified. Compute only what is missing.</p>
     <div class="micro" style="margin-top:42px">Strongest for repeated, cacheable, portable, verifiable work.</div>
   </div>
   <img class="routing-art" src="/assets/routing.svg" alt="A kappa router sending an agent request to a cached result address rather than an idle server farm." />
 </div>
 
 
-<div class="page-number">09</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:45
-Now the address becomes a routing primitive. The cache key is the object itself, so identical inputs and results deduplicate across consumers. Execution can be memoized by its addressed inputs, function, and environment. The network routes toward what is already available—and computes only what is genuinely missing.
+Once an object has a stable address, the address becomes a routing decision. Send the request toward the verified object that already exists. If the closure is incomplete, compute only the missing piece. The network routes toward availability instead of sending every request back to an arbitrary server. But finding an object is only useful if an agent can decide whether to trust it.
 -->
 ---
+layout: default
 ---
-<div class="eyebrow">10 · A concrete proof pattern</div>
+<div class="eyebrow">{{ String($page).padStart(2, '0') }} · Proof in practice</div>
 
-## DataFacts
+## Verify before you act.
 
-<div class="subtitle">Evidence is not just described. It is verified before action or payment.</div>
+<div class="subtitle">A DataFact answers three questions before an agent pays, uses, or delegates it.</div>
 
 <div class="facts-layout">
   <div class="facts-copy">
@@ -353,18 +359,18 @@ Now the address becomes a routing primitive. The cache key is the object itself,
 </div>
 
 
-<div class="page-number">10</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:45
-DataFacts is the concrete example of a viewer protocol above the registry. The registry retrieves the fact and its evidence objects. The DataFacts protocol tells the viewer how to answer three questions: is it current, is it authentic, and is this agent authorized to use it? The important shift is that evidence is verified before an agent acts or a payment settles.
+That is where proof enters. A DataFact is not just a claim; it comes with evidence the viewer can check. Before an agent acts or a payment settles, it asks three questions: is this current, is it authentic, and is this agent authorized to use it? The registry supplies the objects; the protocol explains how to verify them. Once identity and proof travel together, the economics can change too.
 -->
----
-title: Economic inversion
----
 
+---
+layout: default
+---
 <div class="econ-layout">
   <div class="econ-copy">
-    <div class="eyebrow">11 · The economic inversion</div>
+    <div class="eyebrow">{{ String($page).padStart(2, '0') }} · The economic inversion</div>
     <h2>Reuse What Exists. Pay for What’s New.</h2>
     <div class="claim">When state is portable and verifiable, compute becomes a market for transformations—not a lease on a server.</div>
     <div class="callout">Reuse what is already verified. Pay only for the transformation that is missing.</div>
@@ -373,27 +379,27 @@ title: Economic inversion
 </div>
 
 
-<div class="page-number">11</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:40
-The economic consequence is simple: reuse what is already verified and pay only for the transformation that is missing. Compute becomes a market for what changes—not a lease on the same machine.
+The economic consequence is simple: reuse what is already verified and pay only for the transformation that is missing. Compute becomes a market for what changes—not a lease on the same machine, repeated for every consumer. Now we can put the full picture back into the NANDA context.
 -->
 ---
 layout: default
 class: synthesis
 ---
 <div class="synthesis-title-strip">
-  <h2>The Agentic Network Stack</h2>
-  <div class="subtitle">Not pages linked by URLs. Objects linked by meaning, proof, and permission.</div>
+  <h2>The agentic web is an object network.</h2>
+  <div class="subtitle">Actors, facts, models, apps, and compute closures share one identity layer.</div>
 </div>
 
 <img class="synthesis-art" src="/assets/synthesis.svg" alt="Data, AI, apps, and compute exchanging addressed objects above the kappa-registry substrate in NandaTown." />
 
 
-<div class="page-number">12</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:55
-This is the NandaTown version. NANDA resolves the actors and interaction context. UOR and Kappa resolve what those actors exchange: DataFacts, messages, models, codebooks, applications, and compute closures. Hologram materializes those object graphs into experiences. MVM produces missing results safely. The network is no longer pages linked by URLs; it is objects linked by meaning, proof, and permission.
+In NandaTown, these pieces fit together. NANDA gives us the actors and context. UOR and Kappa give those actors durable objects to exchange—facts, messages, models, applications, and compute closures. Hologram makes the graph usable; MVM produces what is missing safely. The web stops being pages linked by URLs and becomes objects linked by meaning, proof, and permission. That is the thesis in one sentence.
 -->
 ---
 layout: default
@@ -401,19 +407,19 @@ class: quote-slide
 ---
 <div class="public-kicker">The Public Thesis</div>
 
-<div class="public-quote">“The agentic web will not be unlocked by giving agents more websites to browse.” It will be unlocked by giving them objects they can <span class="identify">identify</span>, <span class="verify">verify</span>, <span class="route">route</span>, <span class="transform">transform</span>, <span class="act">act on</span>.”</div>
+<div class="public-quote">“Agents do not need more websites to browse. They need objects they can <span class="identify">identify</span>, <span class="verify">verify</span>, <span class="route">route</span>, <span class="transform">transform</span>, and <span class="act">act on</span>.”</div>
 
 
-<div class="page-number">13</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:35
-The public thesis is not that agents need a better browser for the existing web. They need objects with durable identity, evidence, permissions, and a resolution layer. That is what lets them safely identify, verify, route, transform, and act.
+The thesis is not “give agents a better browser.” Give them objects with durable identity, evidence, permission, and a way to resolve them. That combination lets an agent identify, verify, route, transform, and finally act with confidence. The final slide compresses the shift into the language I want us to remember.
 -->
 ---
 layout: default
 class: close-slide
 ---
-<h1>Build the internet agents<br>can actually reason over.</h1>
+<h1>Give agents objects<br>they can trust.</h1>
 
 <div class="transform-list">
   <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
@@ -429,10 +435,10 @@ class: close-slide
 </div>
 
 
-<div class="page-number">14</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:30
-That is the whole story: files become objects, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity. Kappa resolves objects. Hologram makes them usable. MVM safely produces what is missing. Thank you.
+Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; MVM fills what is missing. Give agents objects they can trust. Thank you.
 -->
 
 ---
@@ -442,7 +448,9 @@ class: text-left
 
 # Thank you
 
-<div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> and <a href="https://runmvm.com/" id="ref">MVM</a> teams</div>
+<div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
+
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 
 ---
 layout: center
@@ -451,6 +459,10 @@ class: appendix-divider
 
 # Addendum
 
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+
+---
+layout: default
 ---
 <div class="eyebrow">A1 · Why today's stack is brittle</div>
 
@@ -460,7 +472,9 @@ class: appendix-divider
 
 <img class="brittle-art" src="/assets/brittle.svg" alt="Recall, access, execution, and settlement leaking memory, access, verification, and compute guarantees." />
 
-<div class="page-number">A1</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+---
+layout: default
 ---
 <div class="eyebrow">A2 · The architectural shift</div>
 
@@ -476,7 +490,9 @@ class: appendix-divider
   <div class="domain">Compute</div><div class="hack">Running the same work again somewhere.</div><div class="reality">Resolve the closure; compute only what is missing; audit what ran.</div>
 </div>
 
-<div class="page-number">A2</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+---
+layout: default
 ---
 <div class="eyebrow">A3 · Scope boundary</div>
 
@@ -509,7 +525,9 @@ class: appendix-divider
 
 <div class="status-note">Claim today: the object registry substrate exists. Thesis: familiar cloud surfaces can become projections over it.</div>
 
-<div class="page-number">A3</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+---
+layout: default
 ---
 <div class="eyebrow">A4 · Roadmap, not today's API surface</div>
 
@@ -521,4 +539,4 @@ class: appendix-divider
 
 <div class="micro" style="position:absolute;left:66px;bottom:48px">ROADMAP: S3/etcd projections, Kaiju, governance kernel, semantic manifold.</div>
 
-<div class="page-number">A4</div>
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
