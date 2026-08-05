@@ -29,8 +29,9 @@ favicon: "https://gethologram.ai/favicon.ico"
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-0:25
-Imagine an agent about to pay for a fact. It has a URL or a JSON payload—but can it tell what the thing is, whether it is current, and whether it is allowed to use it? That is the problem I want to solve. Agents do not need more pages. They need objects with identity they can trust.
+Math... but not too much...
+
+Imagine an agent about to pay for a fact. It has a URL or a JSON payload—but can it tell what the thing is, whether it is current, and whether it is allowed to use it? That is the problem UOR and Hologram set out to solve. Agents do not need more pages. They need objects with identity they can trust.
 -->
 ---
 layout: default
@@ -118,7 +119,7 @@ title: Architecture of meaning
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:55
-That question gives us the boundary shown here. QuickTime understands a movie—its tracks, codecs, and timeline—but it does not manage disk blocks. It asks the operating system for the next verified bytes. Hologram plays the same role for addressed objects: the viewer owns the meaning, while kappa-registry resolves the verified object closure. Storage location stays below the boundary, so the experience can remain focused on what the object means.
+That question gives us the boundary shown here. For example, QuickTime understands a movie—its tracks, codecs, and timeline—but it does not manage disk blocks. It asks the operating system for the next verified bytes. Hologram plays the same role for addressed objects: the viewer owns the meaning, while kappa-registry resolves the verified object closure. Storage location stays below the boundary, so the experience can remain focused on what the object means.
 -->
 ---
 layout: default
@@ -249,7 +250,7 @@ $$
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:20
-That stable name is the κ-label. Canonical bytes produce a 32-byte digest; κ turns those bytes into a fixed-width `sha256:` address. Every digest byte becomes an injective pair of hex digits, so equal labels imply equal content identity. It names the object itself, not the place where the object happens to live. The next slide puts that claim through a concrete round trip.
+That stable name is the κ-label. Canonical bytes produce a 32-byte digest; κ turns those bytes into a fixed-width `sha256:` address. Every digest byte becomes an injective pair of hex digits, so equal labels imply equal content identity. It names the object itself, not the place where the object happens to live. Let's look at the concrete round trip.
 
 Source: UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean and KappaDerivation.lean.
 -->
@@ -416,7 +417,7 @@ class: quote-slide
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:35
-The thesis is not “give agents a better browser.” Give them objects with durable identity, evidence, permission, and a way to resolve them. That combination lets an agent identify, verify, route, transform, and finally act with confidence. The final slide compresses the shift into the language I want us to remember.
+The thesis is not “give agents a better browser.” Give them objects with durable identity, evidence, permission, and a way to resolve them. That combination lets an agent identify, verify, route, transform, and finally act with confidence.
 -->
 ---
 layout: default
@@ -441,7 +442,7 @@ class: close-slide
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 0:30
-Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; MVM fills what is missing. Give agents objects they can trust. Thank you.
+Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; the MVM fills what is missing. Give agents objects they can trust. Thank you.
 -->
 
 ---
