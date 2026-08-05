@@ -581,9 +581,135 @@ body,
   color: var(--white);
 }
 
-.math-slide .derivation-label {
-  border-top: 1px solid rgba(170, 186, 202, .18);
-  padding-top: 14px;
+.object-address-example {
+  margin: 12px 0 8px;
+  padding: 12px 16px 14px;
+  border: 1px solid rgba(240, 168, 62, .62);
+  background: rgba(20, 15, 8, .76);
+}
+
+.address-example-label {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  margin-bottom: 10px;
+}
+
+.object-address-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr) auto minmax(0, 1.15fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.object-flow-stage {
+  min-width: 0;
+  min-height: 86px;
+  padding: 10px 12px;
+  border: 1px solid rgba(170, 186, 202, .24);
+  background: rgba(8, 17, 28, .64);
+}
+
+.object-flow-label {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.object-json,
+.object-flow-code,
+.object-flow-address {
+  display: block;
+  margin: 9px 0 0;
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.object-json {
+  color: var(--cyan);
+  white-space: pre-wrap;
+}
+
+.object-flow-code {
+  color: var(--muted);
+}
+
+.object-flow-digest {
+  color: var(--cyan);
+}
+
+.object-flow-address-stage {
+  border-color: rgba(240, 168, 62, .52);
+}
+
+.object-flow-address {
+  color: var(--white);
+}
+
+.object-address-formula,
+.object-lookup-formula {
+  margin-top: 10px;
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.object-lookup-formula {
+  color: var(--cyan);
+}
+
+.object-equivalence-note {
+  margin-top: 9px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2px;
+  line-height: 1.2;
+}
+
+.object-flow-arrow {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 26px;
+}
+
+.address-lookup {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(170, 186, 202, .22);
+}
+
+.address-lookup-equation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.address-lookup-equation code {
+  color: var(--white);
+  overflow-wrap: anywhere;
+}
+
+.object-roundtrip-example {
+  margin-top: 38px;
+}
+
+.object-roundtrip-conclusion {
+  margin-top: 28px;
 }
 
 .math-note {
@@ -598,6 +724,30 @@ body,
   color: var(--cyan);
   font-family: var(--mono);
   font-size: .88em;
+}
+
+.math-proof-label {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.math-proof-label + p {
+  margin: 4px 0 0;
+}
+
+.math-proof-label + p .katex-display {
+  margin: 4px 0 0;
+  padding: 7px 14px;
+  border-color: rgba(240, 168, 62, .3);
+  background: rgba(20, 15, 8, .46);
+  font-size: .76em;
+}
+
+.object-roundtrip-proof-label {
+  margin-top: 18px;
 }
 
 .math-conclusion {
