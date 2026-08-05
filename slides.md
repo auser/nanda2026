@@ -33,7 +33,7 @@ favicon: "https://gethologram.ai/favicon.ico"
 I want to propose a different foundation for the agentic web: not more pages for agents to browse, but an internet of objects they can identify, verify, route, transform, and act on. The core idea is simple: separate what an object means from where its bytes happen to live.
 -->
 ---
-<div class="eyebrow">01 · The foundational mismatch</div>
+<div class="eyebrow">02 · The foundational mismatch</div>
 
 ## Agents are asked to act on meaning.
 
@@ -52,7 +52,7 @@ I want to propose a different foundation for the agentic web: not more pages for
 The foundational mismatch is that agents are asked to act on meaning, while the internet mostly gives them files, API payloads, URLs, and logs. A file can carry bytes, but it rarely carries the durable answers an agent needs: what object is this, is it current, where did it come from, and may this agent use it?
 -->
 ---
-<div class="eyebrow">02 · The conceptual shift</div>
+<div class="eyebrow">03 · The conceptual shift</div>
 
 ## Files vs. Objects
 
@@ -85,7 +85,7 @@ title: Architecture of meaning
 
 <div class="quicktime-layout">
   <div class="left-copy">
-    <div class="eyebrow">03 · The architecture of meaning</div>
+    <div class="eyebrow">04 · The architecture of meaning</div>
     <h2>The QuickTime<br>Analogy</h2>
     <p>The viewer renders the experience. The substrate guarantees retrieval and integrity.</p>
   </div>
@@ -117,7 +117,7 @@ Think about QuickTime. It understands the container, codecs, tracks, and timelin
 -->
 ---
 ---
-<div class="eyebrow">04 · From standard to substrate</div>
+<div class="eyebrow">05 · From standard to substrate</div>
 
 ## The Stack That Makes It Real
 

@@ -35,7 +35,7 @@ The timed PowerPoint export is uploaded with the site and will be downloadable a
 
 <https://auser.github.io/nanda2026/The-Object-Internet-NANDA.pptx>
 
-## Export the timed 13-slide talk
+## Export the timed 14-slide talk
 
 ```bash
 npm run export:pdf
@@ -49,7 +49,18 @@ npm run export:pdf:full
 npm run export:pptx:full
 ```
 
-Slidev exports PPTX slides as images and carries the presenter notes into the notes pane. The included PPTX files follow that same presentation model: the 12-slide file is the timed conference talk; the full file includes the appendix.
+Slidev exports PPTX slides as images and carries the presenter notes into the notes pane. The timed file is the 14-slide conference talk; the full file includes the appendix.
+
+## Publish a PPTX release
+
+Push a version tag to build the timed PPTX and attach it to a GitHub Release:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Tags beginning with `v` trigger the release workflow. The generated PPTX includes the speaker notes.
 
 ## Core boundary
 
