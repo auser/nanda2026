@@ -191,7 +191,7 @@ $$
 <div class="page-number">06</div>
 <!--
 0:45
-This flips the first question of computing. Instead of asking which server should run the job, ask where the verified result or its dependencies already exist, and what is actually missing. Inputs, functions, and environments can all be addressed. If the result already exists, verify and reuse it. If not, compute only the missing transformation and publish another address.
+Start with the old question: which server should run this job? The object network asks a better question: where does the verified result—or the inputs, function, and environment it depends on—already exist? If the closure is already there, resolve and reuse it. If one piece is missing, compute only that piece and publish its new address. The system moves from renting a machine to finding what is already true.
 -->
 ---
 layout: default
@@ -239,7 +239,7 @@ $$
 <div class="page-number">07</div>
 <!--
 0:20
-Start with canonical content, not a bare digest. The content mapping produces a 32-byte digest; κ writes `sha256:` and expands each byte into its high and low hex nibbles, producing the fixed-width address. The next slide makes the object-to-address round trip concrete.
+Now we can give that object a name. We do not start with a bare digest; we start with content. Canonical bytes produce a 32-byte digest, and κ turns those bytes into the fixed-width `sha256:` label. Because every byte becomes an injective pair of hex digits, equal labels force equal digests. The address is not a hint about where the content lives—it is the content's stable identity. The next slide makes that mapping concrete.
 
 Source: UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean and KappaDerivation.lean.
 -->
@@ -303,7 +303,7 @@ $$
 <div class="page-number">08</div>
 <!--
 0:35
-Here is the whole loop. Start with a message object. Canonical bytes produce a digest; κ turns that digest into the stable address shown. Resolve the address and you get the same fields back in a different JSON order. Canonicalization removes that representational difference, so addressing the result gives the same κ-label. The lookup path does not invent a new name.
+Here is the loop. A message object is canonicalized, hashed, and given the address in the middle. Resolve that address and the message comes back with the same fields, even though the JSON keys are shown in a different order. Canonicalization removes that representational difference, so re-addressing the result gives the same κ-label. That is the payoff: the network can route, verify, and reuse the object without confusing a new representation for a new thing.
 
 The exact κ construction is pinned by UOR-Foundation/uor-addr/uor-addr-lean/UorAddr/AddressShape.lean, HexEncoding.lean, and KappaDerivation.lean.
 -->
@@ -324,7 +324,7 @@ The exact κ construction is pinned by UOR-Foundation/uor-addr/uor-addr-lean/Uor
 <div class="page-number">09</div>
 <!--
 0:45
-The efficiency comes from routing by object identity. The cache key is the object itself. Data deduplicates across consumers. Execution memoizes across identical inputs and environments. Workloads move as addresses and closures. The network can route by availability, capability, locality, policy, and cost instead of blindly sending every request to another server job.
+Now the address becomes a routing primitive. The cache key is the object itself, so identical inputs and results deduplicate across consumers. Execution can be memoized by its addressed inputs, function, and environment. The network routes toward what is already available—and computes only what is genuinely missing.
 -->
 ---
 ---

@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "slidev": "node slidev-dev.mjs",
+    "slidev": "node --no-warnings slidev-dev.mjs",
     "dev": "npm run slidev -- slides.md --port 3030",
     "build": "npm run slidev -- build slides.md",
     "build:pages": "npm run slidev -- build slides.md --base \"${PAGES_BASE:-/}\" --router-mode hash",
