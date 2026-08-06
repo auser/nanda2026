@@ -2025,7 +2025,7 @@ body,
 .transform-content {
   display: grid;
   width: min(1450px, 100%);
-  grid-template-columns: minmax(340px, .52fr) minmax(0, 1.48fr);
+  grid-template-columns: minmax(340px, .72fr) minmax(0, 1.38fr);
   gap: 48px;
   align-items: center;
   margin: 0 auto;

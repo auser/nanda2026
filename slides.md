@@ -46,19 +46,19 @@ class: reframe-slide
 <div class="reframe-grid">
   <div class="reframe-step">
     <div class="reframe-bar"><span>1</span></div>
-    <h3>Files → Objects</h3>
+    <h3>Files <v-click>→ Objects</v-click></h3>
   </div>
   <div class="reframe-step">
     <div class="reframe-bar"><span>2</span></div>
-    <h3>Scraped Text → DataFacts</h3>
+    <h3>Scraped Text <v-click>→ DataFacts</v-click></h3>
   </div>
   <div class="reframe-step">
     <div class="reframe-bar"><span>3</span></div>
-    <h3>URLs → Structural Addresses</h3>
+    <h3>URLs <v-click>→ Structural Addresses</v-click></h3>
   </div>
   <div class="reframe-step">
     <div class="reframe-bar"><span>4</span></div>
-    <h3>API Calls → Verifiable Exchanges</h3>
+    <h3>API Calls <v-click>→ Verifiable Exchanges</v-click></h3>
   </div>
 </div>
 
@@ -66,36 +66,10 @@ class: reframe-slide
 
 
 <!--
-0:35
 Today the Internet hands agents files, scraped text, URLs, API responses, and semantically meaningless data.
 
-Reimagine an Internet that turns those ideas into addressable portable objects that carry structural & verifiable identity. With these addressed DataFacts, the question is not what page to browse, but what objects to trust.
+Reimagine an Internet that turns those ideas into portable, addressable objects that carry structural & verifiable identity. With these addressed DataFacts, the question is not what page to browse, but what objects to trust.
 -->
-
-
----
-layout: default
-class: close-slide
----
-<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
-
-<div class="transform-content">
-<div class="transform-list">
-  <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
-  <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
-  <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
-</div>
-
-<div class="stack">
-  <img src="/assets/stack.svg" alt="">
-</div>
-</div>
-
-<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
-<!--
-Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; the MVM fills what is missing. Give agents objects they can trust.
--->
-
 
 ---
 layout: default
@@ -132,7 +106,7 @@ class: conformance-slide
 </div>
 
 <!--
-The stable name is not just a hash; it is a conformance promise. Equivalent key order, numeric form, and Unicode representation converge on one address. A real change diverges, and invalid structure will be rejected. That gives every downstream agent the same identity to route, verify, and reuse, regardless of representation.
+The stable content-address is not just a hash; it is a conformance promise. Equivalent key order, numeric form, and Unicode representation converge on one address. With a real content change, it diverges, and invalid structure will be rejected. That gives every downstream agent the same identity to route, verify, and reuse, regardless of representation.
 -->
 
 ---
@@ -166,7 +140,7 @@ class: byte-integrity-slide
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-Byte-level identity is fragile. Two agents can serialize the same fact with a different key order, numeric representation, or Unicode form, and a raw byte checksum will treat them as different objects. That silently severs provenance. A structural address survives the representation change, so the fact keeps one identity as it moves through the network.
+Byte-level integrity is fragile. Two agents can serialize the same fact with a different key order, numeric representation, or Unicode form, and a raw byte checksum will treat them as different objects. That silently severs provenance. A structural address survives the representation change, so the fact keeps one identity as it moves through the network.
 -->
 
 
@@ -223,7 +197,6 @@ Once an object has a stable address, that address becomes a routing decision. Se
 -->
 
 
-
 ---
 layout: default
 ---
@@ -261,9 +234,35 @@ $$
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-0:35
 Once routing can find an existing object, compute should resolve what is already verified and fill only the gap. Inputs, functions, environments, and results can all be addressed. Now ask what proof an agent needs before it acts on the result.
 -->
+
+
+
+---
+layout: default
+class: close-slide
+---
+<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
+
+<div class="transform-content">
+<div class="transform-list">
+  <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
+  <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
+  <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
+</div>
+
+<div class="stack">
+  <img src="/assets/stack.svg" alt="">
+</div>
+</div>
+
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+<!--
+That is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; the MVM fills what is missing. Give agents objects they can trust.
+-->
+
+
 
 ---
 layout: default
@@ -271,7 +270,7 @@ class: evidence-framework-slide
 ---
 <div class="eyebrow">{{ String($page).padStart(2, '0') }} · UOR x NANDA: Datafacts</div>
 
-## The _current_ status
+## The action status
 
 <div class="evidence-framework-subtitle">Data Facts asks one defining question: Is the agent’s data ready for decision-making?</div>
 
@@ -298,9 +297,9 @@ class: evidence-framework-slide
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-The agent needs to decide what is current as a signed timestamp anchored in an append-only log, authentic means the structure itself resolves to the same address, and authorization is a capability chain that can be checked and revoked.
+What does the agent need to make a decision? The agent needs to decide what is current as a signed timestamp anchored in an append-only log, authenticity means the structure itself resolves to the same address, and authorization is a capability chain that can be checked and revoked.
 
-This is the minimum proof surface for an agent economy: not a claim that sounds trustworthy, but a fact that can be verified.
+This is the minimum proof surface for an agent economy: not a claim that sounds trustworthy, but a fact that can be verified at every step.
 -->
 
 
@@ -341,7 +340,6 @@ class: datafact-triad-slide
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-0:40
 This is the triad in one view. Data Facts asks whether the object is current, authentic, and authorized. UOR-NANDA answers each question with a mechanism: a signed timestamp anchored to an append-only log, a structural content address, and a capability chain with revocation checks. The point is not to add metadata around the fact; it is to make the evidence travel with the object so an agent can bind action to something verifiable.
 -->
 
@@ -520,7 +518,7 @@ class: ofp-slide
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 
 <!--
-UOR Foundation is the substrate, UOR Standards define the common rules, and the UOR-NANDA profile makes those rules interoperable across AgentFacts, Index, and A2A. UOR-DATAFACTS carries identity, freshness, and executable authorization. The data gateway is where that profile becomes a policy engine that can govern a real scenario.
+UOR Foundation is the substrate, UOR Standards define the common rules, and the UOR-NANDA profile makes those rules interoperable across AgentFacts, Index, and A2A communication. UOR-DATAFACTS carries identity, freshness, and executable authorization. The data gateway is where that profile becomes a policy engine that can govern a real scenario. Thank you.
 -->
 
 ---
@@ -531,10 +529,22 @@ class: thank-you-slide
 <div class="thank-you-copy">
   <h1>Thank you</h1>
   <div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
-  <div class="images">
+
+```typescript {none|1|2-5|6|all}
+import { kappa } from "@uor-foundation/uor-addr";
+
+const label = kappa.jsonAddress(
+  new TextEncoder().encode('{"msg":"Thank you"}')
+);
+console.log(label);
+// sha256:8839aafda444d2c36d1b3f27d84ef287f6261975b1b6ddc9972054854b6920c1
+```
+
+<div class="images">
     <div><img src="/assets/uor.svg" /></div>
     <div><img src="/assets/nanda-logo.jpeg" /></div>
   </div>
+
 </div>
 
 <img class="team-photo" src="/assets/team.jpeg" alt="The Hologram team gathered together outdoors." />
