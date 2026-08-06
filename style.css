@@ -1525,8 +1525,8 @@ body,
   position: absolute;
   z-index: 2;
   top: 83px;
-  right: -42px;
-  width: 82px;
+  right: -60px;
+  width: 100px;
   height: 42px;
   background: var(--mono-line);
   clip-path: polygon(0 35%, 64% 35%, 64% 0, 100% 50%, 64% 100%, 64% 65%, 0 65%);
@@ -1546,13 +1546,13 @@ body,
 }
 
 .loop-circle svg {
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   fill: none;
   stroke: var(--mono-soft);
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.8;
+  stroke-width: 2.1;
 }
 
 .loop-label {
@@ -1759,8 +1759,14 @@ body,
   box-shadow: 0 20px 60px rgba(0, 0, 0, .28);
 }
 
+.transform-content {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
 .transform-list {
-  width: 920px;
+  /* width: 920px; */
   margin: 0 auto 40px;
 }
 

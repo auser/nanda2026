@@ -458,18 +458,24 @@ class: close-slide
 ---
 <h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
 
+<div class="transform-content">
 <div class="transform-list">
   <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
   <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
   <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
 </div>
 
-<div class="stack-cards">
+<div class="stack">
+  <img src="/assets/stack.png" alt="">
+</div>
+</div>
+
+<!-- <div class="stack-cards">
   <div class="stack-card"><h3>[ UOR ]</h3><p>The standards and object identity</p></div>
   <div class="stack-card"><h3>[ Hologram ]</h3><p>The viewer and experience</p></div>
   <div class="stack-card"><h3>[ MVM ]</h3><p>The safe missing execution</p></div>
   <div class="stack-card"><h3>[ Kappa ]</h3><p>The registry substrate</p></div>
-</div>
+</div> -->
 
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
