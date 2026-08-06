@@ -182,7 +182,7 @@ layout: default
 <div class="routing-layout">
   <div class="routing-copy">
     <div class="eyebrow">{{ String($page).padStart(2, '0') }} · Routing by identity</div>
-    <h2>An address becomes<br>a routing decision.</h2>
+    <h2>An address becomes<br>a routing decision</h2>
     <p>Resolve what is already verified. Compute only what is missing.</p>
     <div class="micro" style="margin-top:42px">Strongest for repeated, cacheable, portable, verifiable work.</div>
   </div>
@@ -202,7 +202,7 @@ layout: default
 ---
 <div class="eyebrow">{{ String($page).padStart(2, '0') }} · Verified reuse</div>
 
-## Compute starts with<br>what already exists.
+## Compute starts with<br>what already exists
 
 <div class="formula-wrap">
   <div class="old-new">
@@ -243,7 +243,7 @@ Once routing can find an existing object, compute should resolve what is already
 layout: default
 class: close-slide
 ---
-<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
+<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on</h2>
 
 <div class="transform-content">
 <div class="transform-list">
@@ -530,7 +530,7 @@ class: thank-you-slide
   <h1>Thank you</h1>
   <div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
 
-```typescript {none|1|2-5|6|all}
+```typescript {none|1|2-5|6|7|all}
 import { kappa } from "@uor-foundation/uor-addr";
 
 const label = kappa.jsonAddress(
