@@ -64,7 +64,6 @@ class: reframe-slide
 
 <div class="reframe-callout"><span class="reframe-icon">□</span>Don't give agents more websites to browse — give them objects they can identify, verify, route, and act on.</div>
 
-<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 
 <!--
 0:35
@@ -73,6 +72,31 @@ Today the Internet hands agents files, scraped text, URLs, API responses, and se
 Reimagine an Internet that turns those ideas into addressable portable objects that carry structural & verifiable identity. With these addressed DataFacts, the question is not what page to browse, but what objects to trust.
 -->
 
+
+---
+layout: default
+class: close-slide
+---
+<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
+
+<div class="transform-content">
+<div class="transform-list">
+  <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
+  <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
+  <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
+</div>
+
+<div class="stack">
+  <img src="/assets/stack.svg" alt="">
+</div>
+</div>
+
+<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+<!--
+Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; the MVM fills what is missing. Give agents objects they can trust.
+-->
+
+
 ---
 layout: default
 class: conformance-slide
@@ -80,7 +104,7 @@ class: conformance-slide
 
 <div class="eyebrow">{{ String($page).padStart(2, '0') }} · From content to address</div>
 
-## `uor-addr` is a standard
+## `uor-addr` is the content addressing standard
 
 <div class="conformance-subtitle">It turns content into a stable address</div>
 
@@ -107,7 +131,6 @@ class: conformance-slide
   </div>
 </div>
 
-<div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
 The stable name is not just a hash; it is a conformance promise. Equivalent key order, numeric form, and Unicode representation converge on one address. A real change diverges, and invalid structure will be rejected. That gives every downstream agent the same identity to route, verify, and reuse, regardless of representation.
 -->
@@ -143,7 +166,6 @@ class: byte-integrity-slide
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-0:35
 Byte-level identity is fragile. Two agents can serialize the same fact with a different key order, numeric representation, or Unicode form, and a raw byte checksum will treat them as different objects. That silently severs provenance. A structural address survives the representation change, so the fact keeps one identity as it moves through the network.
 -->
 
@@ -388,7 +410,7 @@ class: loop-slide
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 <!--
-The agent delegates work, receives attestation, verifies the 3 guarantees, settles against the verified object, with the capability to revoke trust when the bundary changes.
+The agent delegates work, receives attestation, verifies the 3 guarantees, settles against the verified object, with the capability to revoke trust when the boundary changes.
 
 The loop closes because identity, evidence, permission, and settlement all point back to the same object.
 -->
@@ -454,33 +476,51 @@ This is what the object network unlocks. Memory becomes an object with identity 
 
 ---
 layout: default
-class: close-slide
+class: ofp-slide
 ---
-<h2>Agents do not need more websites to browse. <br />They need objects they can: <br />identify, verify, route, transform, and act on.</h2>
+<div class="ofp-layout">
+  <div class="ofp-copy">
+    <div class="eyebrow">{{ String($page).padStart(2, '0') }} · UOR-NANDA operating framework</div>
 
-<div class="transform-content">
-<div class="transform-list">
-  <div class="transform-line"><div class="from">Files</div><div class="arrow">→</div><div class="to">Objects</div></div>
-  <div class="transform-line"><div class="from">Endpoints</div><div class="arrow">→</div><div class="to">Proof</div></div>
-  <div class="transform-line"><div class="from">Cloud jobs</div><div class="arrow">→</div><div class="to">Verified reuse</div></div>
+  <h2>Operating Framework Placement</h2>
+
+  <div class="ofp-subtitle">Standardizing the external ecosystem profiles for immediate interoperability and governance.</div>
+
+  <div class="ofp-list" aria-label="Operating framework hierarchy">
+    <div class="ofp-spine"></div>
+
+  <div class="ofp-item ofp-foundation">
+    <span class="ofp-index">01</span><strong>UOR Foundation</strong>
+  </div>
+
+  <div class="ofp-item ofp-standards">
+    <span class="ofp-index">02</span><strong>UOR Standards</strong>
+  </div>
+
+  <div class="ofp-item ofp-profile">
+    <span class="ofp-index">03</span><strong>UOR-NANDA Profile</strong>
+    <span class="ofp-detail">Interop across AgentFacts, Index, and A2A</span>
+  </div>
+
+  <div class="ofp-item ofp-datafacts">
+    <span class="ofp-index">04</span><strong>UOR-DATAFACTS Profile</strong>
+    <span class="ofp-detail">Identity, freshness, executable authorization</span>
+  </div>
+
+  <div class="ofp-item ofp-gateway">
+    <span class="ofp-index">05</span><strong>UOR-DATA-GATEWAY</strong>
+    <span class="ofp-detail">Executable Maria scenario policy engine</span>
+  </div>
+</div>
 </div>
 
-<div class="stack">
-  <img src="/assets/stack.png" alt="">
+  <div class="ofp-callout"><strong>The placement matters.</strong> UOR provides the substrate, profiles make it interoperable, and the gateway makes governance executable.</div>
 </div>
-</div>
-
-<!-- <div class="stack-cards">
-  <div class="stack-card"><h3>[ UOR ]</h3><p>The standards and object identity</p></div>
-  <div class="stack-card"><h3>[ Hologram ]</h3><p>The viewer and experience</p></div>
-  <div class="stack-card"><h3>[ MVM ]</h3><p>The safe missing execution</p></div>
-  <div class="stack-card"><h3>[ Kappa ]</h3><p>The registry substrate</p></div>
-</div> -->
-
 
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
+
 <!--
-Here is the shift: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; the MVM fills what is missing. Give agents objects they can trust. Thank you.
+UOR Foundation is the substrate, UOR Standards define the common rules, and the UOR-NANDA profile makes those rules interoperable across AgentFacts, Index, and A2A. UOR-DATAFACTS carries identity, freshness, and executable authorization. The data gateway is where that profile becomes a policy engine that can govern a real scenario.
 -->
 
 ---
@@ -644,7 +684,7 @@ layout: default
 <div class="subtitle">Standards define identity. The viewer creates meaning. The substrate resolves objects. Execution fills the gaps.</div>
 
 <div class="stack">
-  <img src="/assets/stack.png" alt="">
+  <img src="/assets/stack.svg" alt="">
 </div>
 
 <div class="stack-status">Powered by uor-foundation and mvm</div>

@@ -1,8 +1,8 @@
 # The Object Internet — timed speaker script
 
-**Main talk:** slides 1–17. Slides after that are appendix.
+**Main talk:** slides 1–18. Slides after that are appendix.
 
-**Planned duration:** 8:40.
+**Planned duration:** 9:10.
 
 ## 1. The Object Internet — 0:20
 
@@ -52,22 +52,26 @@ There is one trap: raw byte identity is fragile. Key order, numeric representati
 
 This is the triad in one view. Data Facts asks whether the object is current, authentic, and authorized. UOR-NANDA answers each question with a mechanism: a signed timestamp anchored to an append-only log, a structural content address, and a capability chain with revocation checks. The point is not to add metadata around the fact; it is to make the evidence travel with the object so an agent can bind action to something verifiable.
 
-## 13. How UOR-NANDA closes the loop — 0:40
+## 13. Operating framework placement — 0:30
+
+This slide places the operating framework in the stack. UOR Foundation is the substrate, UOR Standards define the common rules, and the UOR-NANDA profile makes those rules interoperable across AgentFacts, Index, and A2A. UOR-DATAFACTS carries identity, freshness, and executable authorization. The data gateway is where that profile becomes a policy engine that can govern a real scenario.
+
+## 14. How UOR-NANDA closes the loop — 0:40
 
 The proof is not a static label; it is an operating loop. An agent delegates work, receives an attestation, verifies the three guarantees, settles against the verified object, and can revoke the capability when the trust boundary changes. Identity, evidence, permission, and settlement all point back to the same object.
 
-## 14. What the Object Internet unlocks — 0:45
+## 15. What the Object Internet unlocks — 0:45
 
 This is the payoff. Memory becomes an object with identity and provenance, not a guess from remembered text. Tool use becomes an action on a verified object under a capability. Messages become signed, verifiable exchanges. Compute becomes closure resolution plus only the missing work. Agents can reason over the same objects instead of reconstructing meaning from scratch.
 
-## 15. The public thesis — 0:30
+## 16. The public thesis — 0:30
 
 The thesis is not “give agents a better browser.” Give them objects with durable identity, evidence, permission, and a way to resolve them. That lets an agent identify, verify, route, transform, and act with confidence.
 
-## 16. Build the internet agents can reason over — 0:25
+## 17. Build the internet agents can reason over — 0:25
 
 Here is the whole stack in one sentence: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; MVM fills what is missing. Give agents objects they can trust.
 
-## 17. Thank you — 0:05
+## 18. Thank you — 0:05
 
 Thank you.

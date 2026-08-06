@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="490" viewBox="0 0 920 490" role="img" aria-labelledby="title desc">
+  <title id="title">UOR object internet stack</title>
+  <desc id="desc">Four stacked layers: UOR Foundation, Hologram, MVM or MVMD, and kappa-registry.</desc>
+  <defs>
+    <pattern id="grid-dark" width="54" height="22" patternUnits="userSpaceOnUse" patternTransform="skewX(-28)">
+      <path d="M0 0V22M27 0V22M0 0H54M0 11H54" fill="none" stroke="#b8c0c8" stroke-opacity=".22" stroke-width="1" />
+    </pattern>
+    <pattern id="grid-blue" width="54" height="22" patternUnits="userSpaceOnUse" patternTransform="skewX(-28)">
+      <path d="M0 0V22M27 0V22M0 0H54M0 11H54" fill="none" stroke="#d8e7f5" stroke-opacity=".28" stroke-width="1" />
+    </pattern>
+    <clipPath id="layer-text-clip">
+      <rect x="0" y="0" width="810" height="74" />
+    </clipPath>
+    <clipPath id="detail-clip">
+      <rect x="248" y="0" width="318" height="74" />
+    </clipPath>
+    <clipPath id="tag-clip">
+      <rect x="566" y="0" width="244" height="74" />
+    </clipPath>
+    <style>
+      .face { fill: #101010; stroke: #ecece7; stroke-width: 2; }
+      .top { fill: url(#grid-dark); stroke: #ecece7; stroke-width: 2; }
+      .blue-face { fill: #21476b; stroke: #d8e7f5; stroke-width: 2; }
+      .blue-top { fill: url(#grid-blue); stroke: #d8e7f5; stroke-width: 2; }
+      .divider { stroke: #aeb6bf; stroke-opacity: .55; stroke-width: 1; }
+      .label { fill: #f1f2ef; font-family: "Nunito Sans", Arial, sans-serif; font-size: 25px; font-weight: 500; }
+      .detail { fill: #f1f2ef; font-family: "Nunito Sans", Arial, sans-serif; font-size: 17px; font-weight: 400; }
+      .tag { fill: #d6a66e; font-family: "JetBrains Mono", Menlo, monospace; font-size: 17px; }
+      .blue-label { fill: #f1f2ef; font-family: "Nunito Sans", Arial, sans-serif; font-size: 25px; font-weight: 500; }
+      .blue-detail { fill: #f1f2ef; font-family: "Nunito Sans", Arial, sans-serif; font-size: 17px; font-weight: 400; }
+      .blue-tag { fill: #f3d09b; font-family: "JetBrains Mono", Menlo, monospace; font-size: 17px; }
+      .micro { fill: #b8c0c8; fill-opacity: .42; font-family: "JetBrains Mono", Menlo, monospace; font-size: 9px; }
+    </style>
+  </defs>
+
+  <rect width="920" height="490" fill="#0d0f12" />
+  <path d="M0 16H920M0 474H920M197 0V490M708 0V490" stroke="#26323d" stroke-opacity=".28" />
+
+  <!-- UOR Foundation -->
+  <g transform="translate(58 48)">
+    <polygon class="top" points="0,0 53,-30 755,-30 810,0" />
+    <rect class="face" width="810" height="74" />
+    <path class="divider" d="M248 0V74M566 0V74" />
+    <g clip-path="url(#layer-text-clip)">
+      <text class="label" x="26" y="45">UOR Foundation</text>
+      <g clip-path="url(#detail-clip)">
+        <text class="detail" x="263" y="29">Defines objects, addresses,</text>
+        <text class="detail" x="263" y="51">provenance, profiles, conformance.</text>
+      </g>
+      <g clip-path="url(#tag-clip)">
+        <text class="tag" text-anchor="end" x="790" y="45">[ The Standards ]</text>
+      </g>
+      <text class="micro" x="20" y="65">01</text>
+    </g>
+  </g>
+
+  <!-- Hologram -->
+  <g transform="translate(58 156)">
+    <polygon class="top" points="0,0 53,-30 755,-30 810,0" />
+    <rect class="face" width="810" height="74" />
+    <path class="divider" d="M248 0V74M566 0V74" />
+    <g clip-path="url(#layer-text-clip)">
+      <text class="label" x="26" y="45">Hologram</text>
+      <g clip-path="url(#detail-clip)">
+        <text class="detail" x="263" y="29">Browser for the object internet.</text>
+        <text class="detail" x="263" y="51">Bootable Holospaces.</text>
+      </g>
+      <g clip-path="url(#tag-clip)">
+        <text class="tag" text-anchor="end" x="790" y="45">[ The Experience ]</text>
+      </g>
+      <text class="micro" x="20" y="65">02</text>
+    </g>
+  </g>
+
+  <!-- MVM / MVMD -->
+  <g transform="translate(58 264)">
+    <polygon class="top" points="0,0 53,-30 755,-30 810,0" />
+    <rect class="face" width="810" height="74" />
+    <path class="divider" d="M248 0V74M566 0V74" />
+    <g clip-path="url(#layer-text-clip)">
+      <text class="label" x="26" y="45">MVM / MVMD</text>
+      <g clip-path="url(#detail-clip)">
+        <text class="detail" x="263" y="29">Isolation, signed plans,</text>
+        <text class="detail" x="263" y="51">freshness, ordering, audit.</text>
+      </g>
+      <g clip-path="url(#tag-clip)">
+        <text class="tag" text-anchor="end" x="790" y="45">[ Safe Execution ]</text>
+      </g>
+      <text class="micro" x="20" y="65">03</text>
+    </g>
+  </g>
+
+  <!-- kappa-registry substrate -->
+  <g transform="translate(58 372)">
+    <polygon class="blue-top" points="0,0 53,-30 755,-30 810,0" />
+    <rect class="blue-face" width="810" height="74" />
+    <path class="divider" d="M248 0V74M566 0V74" />
+    <path d="M248 0V74M566 0V74" stroke="#d8e7f5" stroke-opacity=".28" />
+    <g clip-path="url(#layer-text-clip)">
+      <text class="blue-label" x="26" y="45">kappa-registry</text>
+      <g clip-path="url(#detail-clip)">
+        <text class="blue-detail" x="263" y="29">Content-addressed runtime,</text>
+        <text class="blue-detail" x="263" y="51">identity and verification graph.</text>
+      </g>
+      <g clip-path="url(#tag-clip)">
+        <text class="blue-tag" text-anchor="end" x="790" y="45">[ The Substrate ]</text>
+      </g>
+      <text class="micro" x="20" y="65">04</text>
+    </g>
+  </g>
+
+  <!-- quiet substrate/grid detail -->
+  <path d="M16 466H904M26 458H894" stroke="#21476b" stroke-opacity=".45" />
+  <path d="M20 460L80 410M900 460L842 410" stroke="#21476b" stroke-opacity=".35" />
+</svg>
