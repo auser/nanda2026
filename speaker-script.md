@@ -1,57 +1,73 @@
 # The Object Internet — timed speaker script
 
-**Main talk:** slides 1–13. Slides after that are appendix.
+**Main talk:** slides 1–17. Slides after that are appendix.
 
-**Planned duration:** 8:50.
+**Planned duration:** 8:40.
 
-## 1. The Object Internet — 0:25
+## 1. The Object Internet — 0:20
 
-I want to propose a different foundation for the agentic web: not more pages for agents to browse, but an internet of objects they can identify, verify, route, transform, and act on. The core idea is simple: separate what an object means from where its bytes happen to live.
+Imagine an agent about to pay for a fact. It has a URL or a JSON payload, but can it tell what the thing is, whether it is current, and whether it is allowed to use it? This talk is about giving agents objects they can trust.
 
-## 2. Agents are asked to act on meaning. — 0:45
+## 2. The Agentic Web — A Reframe — 0:35
 
-The foundational mismatch is that agents are asked to act on meaning, while the internet mostly gives them files, API payloads, URLs, and logs. A file can carry bytes, but it rarely carries the durable answers an agent needs: what object is this, is it current, where did it come from, and may this agent use it?
+The reframe is the whole premise. Today’s agentic internet hands agents files, scraped text, URLs, and API responses. The object internet turns those into addressed objects, DataFacts, structural identity, and verifiable exchanges. From here, the question is not what page to browse, but what object to trust.
 
-## 3. Files vs. Objects — 0:40
+## 3. Without UOR vs. With UOR — 0:35
 
-The reframe is from a file-oriented internet to an object-oriented one. Instead of fetching and scraping, agents resolve and verify. Instead of location names, they exchange structural addresses. Instead of every app maintaining its own copies and caches, the network can recognize shared object identity.
+Here is the contract we are trying to build. Without UOR, re-encoding forks identity, freshness is a client-side promise, authorization is only described, and nothing settles on evidence. With UOR, identity survives representation changes, proof travels with the object, and action becomes reproducible. The rest of the talk shows how.
 
-## 4. The QuickTime Analogy — 0:55
+## 4. The viewer owns meaning — 0:40
 
-Think about QuickTime. It understands the container, codecs, tracks, and timeline, but it does not need to know which disk block, CDN node, or cache contains the next segment. It asks the operating system for data and reconstructs the experience. Hologram generalizes that boundary. The viewer knows the root object and the protocol that explains it. Kappa-registry gets the verified object closure. Where those objects live is below the viewer.
+That question gives us the boundary shown here. QuickTime understands a movie—tracks, codecs, and timeline—but does not manage disk blocks. Hologram plays the same role for addressed objects: the viewer owns meaning, while kappa-registry resolves the verified closure underneath it.
 
-## 5. The Stack That Makes It Real — 0:50
+## 5. Four layers, one boundary — 0:35
 
-This is the stack. UOR defines object identity and protocol vocabulary. Hologram is the viewer and experience. MVM safely executes only what is missing. Kappa-registry is the substrate that resolves and verifies the object graph. Important boundary: Kappa is the shipped registry substrate—OCI store, typed signed edges, identity and absence proofs, epoch-chained audit, encryption, and Veilid federation. S3 and etcd projections, Kaiju, the governance kernel, and the semantic manifold are roadmap, not today's public API surface.
+Four layers make that boundary real. UOR defines identity. Hologram creates the experience. Kappa-registry resolves and verifies the graph. MVM runs only the work that is genuinely missing. With meaning above resolution, compute can ask a better first question.
 
-## 6. What Compute Becomes — 0:45
+## 6. The conformance seed — 0:25
 
-This flips the first question of computing. Instead of asking which server should run the job, ask where the verified result or its dependencies already exist, and what is actually missing. Inputs, functions, and environments can all be addressed. If the result already exists, verify and reuse it. If not, compute only the missing transformation and publish another address.
+The stable name is not just a hash; it is a conformance promise. Equivalent key order, numeric form, and Unicode representation must converge on one address. A real change must diverge, and invalid structure must be rejected. That gives every downstream agent the same identity to route, verify, and reuse.
 
-## 7. A digest enters. A stable address leaves. — 0:20
+## 7. Make it, find it, get the same object back — 0:30
 
-Start with a digest. Kappa writes `sha256:` and expands each byte into a high and low hex position, so every address is exactly 71 bytes. The Lean version makes that concrete: same digest, same label; different digest, different label.
+Here is the round trip. Two JSON objects arrive in different field orders, but canonicalization gives them the same bytes, digest, and address. The network can now reuse the object without mistaking a new representation for a new thing.
 
-## 8. Solving Compute Waste via Object Routing — 0:45
+## 8. Route by identity — 0:35
 
-The efficiency comes from routing by object identity. The cache key is the object itself. Data deduplicates across consumers. Execution memoizes across identical inputs and environments. Workloads move as addresses and closures. The network can route by availability, capability, locality, policy, and cost instead of blindly sending every request to another server job.
+Once an object has a stable address, that address becomes a routing decision. Send the request toward the verified object that already exists. If the closure is incomplete, compute only the missing piece. Identity turns routing into reuse instead of another blind server job.
 
-## 9. DataFacts — 0:45
+## 9. Compute starts with what already exists — 0:35
 
-DataFacts is the concrete example of a viewer protocol above the registry. The registry retrieves the fact and its evidence objects. The DataFacts protocol tells the viewer how to answer three questions: is it current, is it authentic, and is this agent authorized to use it? The important shift is that evidence is verified before an agent acts or a payment settles.
+Once routing can find an existing object, compute should resolve what is already verified and fill only the gap. Inputs, functions, environments, and results can all be addressed. That is the reuse test; next we ask what proof an agent needs before it acts on the result.
 
-## 10. Reuse What Exists. Pay for What’s New. — 0:40
+## 10. The Shared Framework — 0:30
 
-The economic consequence is simple: reuse what is already verified and pay only for the transformation that is missing. Compute becomes a market for what changes—not a lease on the same machine.
+Now the object carries the evidence an agent needs before it acts: current, authentic, and authorized. Current is a signed timestamp anchored to an append-only log. Authentic is structural resolution to the same address. Authorized is a capability chain that can be checked and revoked. This is the minimum proof surface for an agent economy.
 
-## 11. Synthesis: The Agentic Network Stack — 0:55
+## 11. Where byte-level integrity breaks — 0:30
 
-This is the NandaTown version. NANDA resolves the actors and interaction context. UOR and Kappa resolve what those actors exchange: DataFacts, messages, models, codebooks, applications, and compute closures. Hologram materializes those object graphs into experiences. MVM produces missing results safely. The network is no longer pages linked by URLs; it is objects linked by meaning, proof, and permission.
+There is one trap: raw byte identity is fragile. Key order, numeric representation, or Unicode form can change the checksum even when the fact has not changed. That severs provenance and quarantine history. Structural identity keeps one address across those representation changes.
 
-## 12. The Public Thesis — 0:35
+## 12. The triad: from evidence to binding — 0:40
 
-The public thesis is not that agents need a better browser for the existing web. They need objects with durable identity, evidence, permissions, and a resolution layer. That is what lets them safely identify, verify, route, transform, and act.
+This is the triad in one view. Data Facts asks whether the object is current, authentic, and authorized. UOR-NANDA answers each question with a mechanism: a signed timestamp anchored to an append-only log, a structural content address, and a capability chain with revocation checks. The point is not to add metadata around the fact; it is to make the evidence travel with the object so an agent can bind action to something verifiable.
 
-## 13. Build the internet agents can actually reason over. — 0:30
+## 13. How UOR-NANDA closes the loop — 0:40
 
-That is the whole story: files become objects, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity. Kappa resolves objects. Hologram makes them usable. MVM safely produces what is missing. Thank you.
+The proof is not a static label; it is an operating loop. An agent delegates work, receives an attestation, verifies the three guarantees, settles against the verified object, and can revoke the capability when the trust boundary changes. Identity, evidence, permission, and settlement all point back to the same object.
+
+## 14. What the Object Internet unlocks — 0:45
+
+This is the payoff. Memory becomes an object with identity and provenance, not a guess from remembered text. Tool use becomes an action on a verified object under a capability. Messages become signed, verifiable exchanges. Compute becomes closure resolution plus only the missing work. Agents can reason over the same objects instead of reconstructing meaning from scratch.
+
+## 15. The public thesis — 0:30
+
+The thesis is not “give agents a better browser.” Give them objects with durable identity, evidence, permission, and a way to resolve them. That lets an agent identify, verify, route, transform, and act with confidence.
+
+## 16. Build the internet agents can reason over — 0:25
+
+Here is the whole stack in one sentence: files become objects, locations become addresses, endpoints become proof, and cloud jobs become verified reuse. UOR defines identity; Kappa resolves it; Hologram makes it meaningful; MVM fills what is missing. Give agents objects they can trust.
+
+## 17. Thank you — 0:05
+
+Thank you.

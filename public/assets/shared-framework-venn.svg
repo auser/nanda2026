@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 470" role="img" aria-labelledby="title desc">
+  <title id="title">The Shared Framework</title>
+  <desc id="desc">Three overlapping circles labeled Current, Authentic, and Authorized. Their shared center is highlighted as Ready.</desc>
+  <defs>
+    <style>
+      .ring { fill: rgba(191,149,249,.05); stroke: #ecece7; stroke-width: 3; opacity: .82; }
+      .ready { fill: rgba(191,149,249,.26); stroke: #BF95F9; stroke-width: 3; }
+      .label { fill: #ecece7; font-family: "Nunito Sans", Arial, sans-serif; font-size: 25px; font-weight: 650; }
+      .ready-label { fill: #BF95F9; font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 1.2px; }
+    </style>
+  </defs>
+  <circle class="ring" cx="325" cy="155" r="132" />
+  <circle class="ring" cx="235" cy="292" r="132" />
+  <circle class="ring" cx="415" cy="292" r="132" />
+  <circle class="ready" cx="325" cy="250" r="54" />
+  <text class="label" x="325" y="145" text-anchor="middle">Current</text>
+  <text class="label" x="235" y="310" text-anchor="middle">Authentic</text>
+  <text class="label" x="415" y="310" text-anchor="middle">Authorized</text>
+  <text class="ready-label" x="325" y="255" text-anchor="middle">READY</text>
+</svg>

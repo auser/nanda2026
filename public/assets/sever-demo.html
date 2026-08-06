@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!-- saved from url=(0141)file:///Users/auser/Library/Containers/net.whatsapp.WhatsApp/Data/tmp/documents/24DF97C1-BE09-479C-8C7F-86F8EA0A2597/sever-demo-visual_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sever — Live Accountability Loop</title>
+<style>
+  :root{
+    --navy:#2A3384; --navy2:#343f9e; --ink:#F2F4FB; --paper:#07080F;
+    --surface:#10131F; --surface2:#151A2B;
+    --red:#F06B66; --green:#3BD08C; --grey:#7C82A0; --body:#C2C7DA;
+    --line:rgba(255,255,255,.09); --mono-bg:#0C0F1C; --mono-fg:#D7DBEC;
+    --amber:#E0A745;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Arial,sans-serif;
+    background:var(--paper); color:var(--body); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 24px 64px}
+
+  /* header */
+  .kicker{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--grey);text-transform:uppercase}
+  h1{font-family:Cambria,Georgia,serif;font-size:34px;color:var(--ink);margin:6px 0 4px;font-weight:700}
+  .sub{font-size:15px;color:var(--body);margin:0 0 18px;max-width:760px}
+
+  .bar{
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin-bottom:22px;
+  }
+  .svc{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;color:#9fb0ff;font-weight:600}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
+    padding:5px 11px;border-radius:999px}
+  .pill .dot{width:8px;height:8px;border-radius:50%}
+  .pill.health{background:rgba(59,208,140,.14);color:var(--green)} .pill.health .dot{background:var(--green)}
+  .pill.health.down{background:rgba(240,107,102,.14);color:var(--red)} .pill.health.down .dot{background:var(--red)}
+  .pill.health.wait{background:rgba(224,167,69,.14);color:var(--amber)} .pill.health.wait .dot{background:var(--amber)}
+  .mode{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .mode label{font-size:12.5px;color:var(--body);display:flex;align-items:center;gap:6px;cursor:pointer}
+  .modebadge{font-size:11px;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:999px;text-transform:uppercase}
+  .modebadge.live{background:rgba(59,208,140,.16);color:var(--green)}
+  .modebadge.rep{background:rgba(159,176,255,.14);color:#9fb0ff}
+  button.run{
+    background:var(--navy);color:#fff;border:0;border-radius:10px;padding:11px 20px;
+    font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}
+  button.run:hover{background:var(--navy2)}
+  button.run:disabled{opacity:.5;cursor:default}
+  button.ghost{background:var(--surface2);color:#c7ccea;border:1px solid var(--line);border-radius:10px;
+    padding:11px 16px;font-size:14px;font-weight:600;cursor:pointer}
+  button.ghost:hover{border-color:#9fb0ff}
+
+  /* steps */
+  .step{
+    display:grid;grid-template-columns:170px 1fr;gap:20px;
+    padding:18px 0;border-top:1px solid var(--line);
+    opacity:.32;filter:saturate(.4);transition:opacity .4s,filter .4s;
+  }
+  .step.active{opacity:1;filter:none}
+  .step .label{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+  .labelpill{background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;
+    padding:8px 15px;border-radius:999px;text-transform:uppercase}
+  .labelpill.allow{background:var(--green)} .labelpill.reject{background:var(--red)}
+  .triad{font-size:11px;color:var(--grey);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .narr{font-size:14.5px;color:var(--ink);margin:0 0 10px}
+  .call{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px;color:#9fb0ff;
+    background:var(--surface2);border-radius:7px;padding:6px 10px;display:inline-block;margin-bottom:10px}
+  .call .m{color:var(--red);font-weight:700}
+  .resp{background:var(--mono-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;
+    min-height:20px;position:relative}
+  .resp pre{margin:0;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;
+    line-height:1.55;color:var(--mono-fg);white-space:pre-wrap;word-break:break-word}
+  .resp.empty{background:var(--surface);border:1px dashed var(--line)}
+  .resp.empty::after{content:"awaiting run…";color:var(--grey);font-size:12px;font-style:italic}
+  .k{color:#8fb8ff}.s{color:#a9e6c9}.n{color:#f2c777}.b{color:#f2c777}
+  .verdict{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;
+    padding:6px 13px;border-radius:8px;margin-bottom:10px;letter-spacing:.5px}
+  .verdict.allow{background:rgba(30,158,106,.15);color:#5ff0b0}
+  .verdict.reject{background:rgba(214,69,65,.16);color:#ff9b96}
+  .explorer{margin-top:10px;font-size:12.5px}
+  .explorer a{color:#8fb8ff;text-decoration:none;font-family:"SF Mono",Menlo,Consolas,monospace;word-break:break-all}
+  .explorer a:hover{text-decoration:underline}
+  .copy{position:absolute;top:9px;right:10px;background:rgba(255,255,255,.08);color:#c7cbe0;
+    border:0;border-radius:6px;padding:4px 9px;font-size:11px;cursor:pointer}
+  .copy:hover{background:rgba(255,255,255,.16)}
+  .note{font-size:12px;color:var(--amber);margin-top:8px}
+  .reject-flash{animation:flash 1.1s ease}
+  @keyframes flash{0%{box-shadow:0 0 0 0 rgba(214,69,65,0)}30%{box-shadow:0 0 0 4px rgba(214,69,65,.35)}100%{box-shadow:0 0 0 0 rgba(214,69,65,0)}}
+
+  /* triad footer */
+  .footer{margin-top:34px;background:var(--navy);border-radius:14px;padding:22px 26px;color:#fff}
+  .footer h3{margin:0 0 14px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#aab2e0;font-weight:700}
+  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .tcard .tt{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+  .tcard .td{font-size:12.5px;color:#cdd3ee;line-height:1.45}
+  .footline{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);font-size:14px}
+  .footline b{color:#fff}
+  @media(max-width:720px){
+    .step{grid-template-columns:1fr;gap:10px}
+    .tgrid{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Nandatown + DataFacts · Sever Trust Plane</div>
+  <h1>The accountability loop, running live</h1>
+  <p class="sub">Authority, data integrity, revocation, and payment — verified together <b>before the money moves</b>. Press play: the verifier says <b style="color:var(--green)">ALLOW</b> and a real payment settles on the XRP Ledger; revoke one permission and the identical receipt now settles nothing.</p>
+
+  <div class="bar">
+    <span class="svc" id="svcurl">sever-trust.onrender.com</span>
+    <span class="pill health down" id="health"><span class="dot"></span><span id="healthtxt">live call blocked — falling back</span></span>
+    <div class="mode">
+      <label><input type="checkbox" id="livetoggle" checked=""> Try live service</label>
+      <span class="modebadge rep" id="modebadge">Representative</span>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;margin:-8px 0 24px">
+    <button class="run" id="runbtn">▶ Run the loop</button>
+    <button class="ghost" id="resetbtn">Reset</button>
+  </div>
+
+  <div id="steps"><div class="step active" id="step-bootstrap"><div class="label"><span class="labelpill">Bootstrap</span><span class="triad">setup</span></div><div class="content"><p class="narr">A task, an escrow holding payment, and a starting permission.</p><span class="call"><span class="m">POST</span> /demo/bootstrap</span><div class="resp" id="resp-bootstrap" data-json="{
+  &quot;root_did&quot;: &quot;did:key:z6MkhDPBFb3CVwRMayVL4n3oKV8fyznppMZUXHdrik8dgLnX&quot;,
+  &quot;worker_did&quot;: &quot;did:key:z6MksBrJy9pUuRxdy6DGGomM8WA7oo6BUBYNig5VwPv7BWZP&quot;,
+  &quot;leaf_link_id&quot;: &quot;sha256:9d735dd44460078f573c94abc7e3e729aeb59963d1744ec6c611cb04ac102811&quot;,
+  &quot;escrow_id&quot;: &quot;esc_9d735dd4&quot;
+}"><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"root_did"</span>: <span class="s">"did:key:z6MkhDPBFb3CVwRMayVL4n3oKV8fyznppMZUXHdrik8dgLnX"</span>,
+  <span class="k">"worker_did"</span>: <span class="s">"did:key:z6MksBrJy9pUuRxdy6DGGomM8WA7oo6BUBYNig5VwPv7BWZP"</span>,
+  <span class="k">"leaf_link_id"</span>: <span class="s">"sha256:9d735dd44460078f573c94abc7e3e729aeb59963d1744ec6c611cb04ac102811"</span>,
+  <span class="k">"escrow_id"</span>: <span class="s">"esc_9d735dd4"</span>
+}</pre></div></div></div><div class="step active" id="step-delegate"><div class="label"><span class="labelpill">Delegate</span><span class="triad">authorized</span></div><div class="content"><p class="narr">The worker narrows its own authority and passes it on — smaller, never bigger. Enforced on create and on check.</p><span class="call"><span class="m">POST</span> /delegate</span><div class="resp" id="resp-delegate" data-json="{
+  &quot;link_id&quot;: &quot;sha256:fd04649e742b979c712f9ec41d0e1b2ce3ef0377be5552e8f29b32a7f893203a&quot;,
+  &quot;capabilities&quot;: [
+    {
+      &quot;resource&quot;: &quot;task:translate/en-fr&quot;,
+      &quot;action&quot;: &quot;execute&quot;
+    }
+  ]
+}"><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"link_id"</span>: <span class="s">"sha256:fd04649e742b979c712f9ec41d0e1b2ce3ef0377be5552e8f29b32a7f893203a"</span>,
+  <span class="k">"capabilities"</span>: [
+    {
+      <span class="k">"resource"</span>: <span class="s">"task:translate/en-fr"</span>,
+      <span class="k">"action"</span>: <span class="s">"execute"</span>
+    }
+  ]
+}</pre><div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div></div></div></div><div class="step active" id="step-attest"><div class="label"><span class="labelpill">Attest</span><span class="triad">authentic</span></div><div class="content"><p class="narr">The agent does the work and signs a receipt binding this job to this exact output.</p><span class="call"><span class="m">POST</span> /attest</span><div class="resp" id="resp-attest" data-json="{
+  &quot;attestation_id&quot;: &quot;att_d3359f2ad40645fc&quot;,
+  &quot;artifact_addr&quot;: &quot;uor:sha256:4e684d020405d59069afe3e599cda2c5dcfc26f751025b0a5982d578fbab68d4&quot;,
+  &quot;log&quot;: {
+    &quot;index&quot;: 41,
+    &quot;head&quot;: &quot;sha256:8b0d5d64f5&quot;
+  }
+}"><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"attestation_id"</span>: <span class="s">"att_d3359f2ad40645fc"</span>,
+  <span class="k">"artifact_addr"</span>: <span class="s">"uor:sha256:4e684d020405d59069afe3e599cda2c5dcfc26f751025b0a5982d578fbab68d4"</span>,
+  <span class="k">"log"</span>: {
+    <span class="k">"index"</span>: <span class="n">41</span>,
+    <span class="k">"head"</span>: <span class="s">"sha256:8b0d5d64f5"</span>
+  }
+}</pre><div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div></div></div></div><div class="step active" id="step-verify1"><div class="label"><span class="labelpill allow">Verify → ALLOW</span><span class="triad">action</span></div><div class="content"><p class="narr">The verifier checks the whole chain: permission real, still valid, output matches the signature. Everything passes — the escrow releases.</p><span class="call"><span class="m">POST</span> /verify</span><div class="resp" id="resp-verify1" data-json="{
+  &quot;decision&quot;: &quot;ALLOW&quot;,
+  &quot;xrpl_tx_hash&quot;: &quot;63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03&quot;,
+  &quot;explorer_url&quot;: &quot;https://testnet.xrpl.org/transactions/63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03&quot;
+}"><div class="verdict allow">✓ ALLOW · escrow released</div><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"decision"</span>: <span class="s">"ALLOW"</span>,
+  <span class="k">"xrpl_tx_hash"</span>: <span class="s">"63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03"</span>,
+  <span class="k">"explorer_url"</span>: <span class="s">"https://testnet.xrpl.org/transactions/63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03"</span>
+}</pre><div class="explorer">↳ on the public ledger: <a href="https://testnet.xrpl.org/transactions/63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03" target="_blank" rel="noopener">https://testnet.xrpl.org/transactions/63E35A5852408699342102FFD08F371DC443973FBB97001AA32728CF69AEBD03</a></div><div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div></div></div></div><div class="step active" id="step-revoke"><div class="label"><span class="labelpill">Revoke</span><span class="triad">current</span></div><div class="content"><p class="narr">Now the permission is pulled — compromised, or the job was cancelled. One call.</p><span class="call"><span class="m">POST</span> /revoke</span><div class="resp" id="resp-revoke" data-json="{
+  &quot;revocation_id&quot;: &quot;rev_f246038a7158&quot;,
+  &quot;revoked_link_id&quot;: &quot;sha256:ac3a9aace9c86185394e7247b3dcc1854dd86f47f05b2dafb0288fb13ef60017&quot;
+}"><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"revocation_id"</span>: <span class="s">"rev_f246038a7158"</span>,
+  <span class="k">"revoked_link_id"</span>: <span class="s">"sha256:ac3a9aace9c86185394e7247b3dcc1854dd86f47f05b2dafb0288fb13ef60017"</span>
+}</pre><div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div></div></div></div><div class="step active" id="step-verify2"><div class="label"><span class="labelpill reject">Verify → REJECT</span><span class="triad">action</span></div><div class="content"><p class="narr">Same agent, same signed receipt — everything looks identical. Revoked before settlement, so the money does not move.</p><span class="call"><span class="m">POST</span> /verify</span><div class="resp reject-flash" id="resp-verify2" data-json="{
+  &quot;decision&quot;: &quot;REJECT&quot;,
+  &quot;failure&quot;: {
+    &quot;code&quot;: &quot;REVOKED_BEFORE_SETTLEMENT&quot;,
+    &quot;link_id&quot;: &quot;sha256:ac3a9aace9c86185394e7247b3dcc1854dd86f47f05b2dafb0288fb13ef60017&quot;,
+    &quot;detail&quot;: &quot;capability revoked prior to settlement; escrow not released&quot;
+  }
+}"><div class="verdict reject">✕ REJECT · settlement blocked</div><button class="copy" onclick="copyJSON(this)">copy</button><pre>{
+  <span class="k">"decision"</span>: <span class="s">"REJECT"</span>,
+  <span class="k">"failure"</span>: {
+    <span class="k">"code"</span>: <span class="s">"REVOKED_BEFORE_SETTLEMENT"</span>,
+    <span class="k">"link_id"</span>: <span class="s">"sha256:ac3a9aace9c86185394e7247b3dcc1854dd86f47f05b2dafb0288fb13ef60017"</span>,
+    <span class="k">"detail"</span>: <span class="s">"capability revoked prior to settlement; escrow not released"</span>
+  }
+}</pre><div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div></div></div></div></div>
+
+  <div class="footer">
+    <h3>What each check maps to — NANDA DataFacts</h3>
+    <div class="tgrid">
+      <div class="tcard"><div class="tt" style="color:#9fe3c4">Authentic</div><div class="td">One structural address for the object — re-encodings collapse, tampering still shows.</div></div>
+      <div class="tcard"><div class="tt" style="color:#9fe3c4">Current</div><div class="td">A signed, ledger-anchored attestation you can prove after the fact.</div></div>
+      <div class="tcard"><div class="tt" style="color:#9fe3c4">Authorized</div><div class="td">Capability chain checked live — and revocable before settlement.</div></div>
+      <div class="tcard"><div class="tt" style="color:#9fe3c4">Action</div><div class="td">Verify → settle, reproducible; the verdict is signed so others can re-check.</div></div>
+    </div>
+    <div class="footline">DataFacts says what evidence exists. <b>UOR makes it hold — and makes the agent's action accountable.</b></div>
+  </div>
+</div>
+
+<script>
+const SEVER = "https://sever-trust.onrender.com";
+document.getElementById("svcurl").textContent = SEVER.replace(/^https?:\/\//,"");
+
+/* ---------- helpers ---------- */
+function rhex(n){const b=new Uint8Array(n);crypto.getRandomValues(b);return[...b].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function RHEX(n){return rhex(n).toUpperCase()}
+const short = h => h.slice(0,10);
+
+function syntax(obj){
+  let json = JSON.stringify(obj,null,2);
+  json = json.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  json = json.replace(/"([^"]+)":/g,'<span class="k">"$1"</span>:');
+  json = json.replace(/: "([^"]*)"/g,': <span class="s">"$1"</span>');
+  json = json.replace(/: (\d+\.?\d*)/g,': <span class="n">$1</span>');
+  json = json.replace(/: (true|false|null)/g,': <span class="b">$1</span>');
+  return json;
+}
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+
+/* ---------- representative data (matches live API shapes) ---------- */
+function repData(){
+  const leaf = "sha256:"+rhex(32);
+  const att  = "att_"+rhex(8);
+  const esc  = "escrow_"+rhex(6);
+  const tx   = RHEX(32);
+  const addr = "uor:sha256:"+rhex(32);
+  return {
+    bootstrap:{ root_did:"did:key:z6Mk"+rhex(16), worker_did:"did:key:z6Mk"+rhex(16),
+      leaf_link_id:leaf, escrow_id:esc, task_spec_hash:"sha256:"+rhex(32), escrow_state:"HELD" },
+    delegate:{ link_id:"sha256:"+rhex(32),
+      capabilities:[{resource:"task:translate/en-fr",action:"execute"}] },
+    attest:{ attestation_id:att, artifact_addr:addr, log:{index:41,head:"sha256:"+short(rhex(32))} },
+    allow:{ decision:"ALLOW", xrpl_tx_hash:tx,
+      explorer_url:"https://testnet.xrpl.org/transactions/"+tx },
+    revoke:{ revocation_id:"rev_"+rhex(6), revoked_link_id:leaf },
+    reject:{ decision:"REJECT",
+      failure:{ code:"REVOKED_BEFORE_SETTLEMENT", link_id:leaf,
+        detail:"capability revoked prior to settlement; escrow not released" } },
+    _leaf:leaf, _att:att, _esc:esc
+  };
+}
+
+/* ---------- step definitions ---------- */
+const STEPS = [
+  {id:"bootstrap", label:"Bootstrap", triad:"setup", allow:false,
+   narr:"A task, an escrow holding payment, and a starting permission.",
+   call:['POST','/demo/bootstrap'], pick:d=>({root_did:d.bootstrap.root_did, worker_did:d.bootstrap.worker_did, leaf_link_id:d.bootstrap.leaf_link_id, escrow_id:d.bootstrap.escrow_id})},
+  {id:"delegate", label:"Delegate", triad:"authorized", allow:false,
+   narr:"The worker narrows its own authority and passes it on — smaller, never bigger. Enforced on create and on check.",
+   call:['POST','/delegate'], pick:d=>d.delegate},
+  {id:"attest", label:"Attest", triad:"authentic", allow:false,
+   narr:"The agent does the work and signs a receipt binding this job to this exact output.",
+   call:['POST','/attest'], pick:d=>d.attest},
+  {id:"verify1", label:"Verify → ALLOW", triad:"action", allow:true,
+   narr:"The verifier checks the whole chain: permission real, still valid, output matches the signature. Everything passes — the escrow releases.",
+   call:['POST','/verify'], pick:d=>d.allow, explorer:d=>d.allow.explorer_url},
+  {id:"revoke", label:"Revoke", triad:"current", allow:false,
+   narr:"Now the permission is pulled — compromised, or the job was cancelled. One call.",
+   call:['POST','/revoke'], pick:d=>d.revoke},
+  {id:"verify2", label:"Verify → REJECT", triad:"action", reject:true,
+   narr:"Same agent, same signed receipt — everything looks identical. Revoked before settlement, so the money does not move.",
+   call:['POST','/verify'], pick:d=>d.reject},
+];
+
+/* build DOM */
+const stepsEl = document.getElementById("steps");
+STEPS.forEach(s=>{
+  const cls = s.allow ? "labelpill allow" : s.reject ? "labelpill reject" : "labelpill";
+  const el = document.createElement("div");
+  el.className="step"; el.id="step-"+s.id;
+  el.innerHTML =
+    '<div class="label"><span class="'+cls+'">'+s.label+'</span><span class="triad">'+s.triad+'</span></div>'+
+    '<div class="content">'+
+      '<p class="narr">'+s.narr+'</p>'+
+      '<span class="call"><span class="m">'+s.call[0]+'</span> '+s.call[1]+'</span>'+
+      '<div class="resp empty" id="resp-'+s.id+'"></div>'+
+    '</div>';
+  stepsEl.appendChild(el);
+});
+
+/* ---------- live calls ---------- */
+async function withTimeout(promise, ms){
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), ms);
+  try{ return await promise(ctrl.signal); } finally{ clearTimeout(t); }
+}
+async function jpost(path, body, signal){
+  const r = await fetch(SEVER+path,{method:"POST",headers:{"content-type":"application/json"},
+    body:body?JSON.stringify(body):undefined, signal});
+  if(!r.ok) throw new Error("HTTP "+r.status);
+  return r.json();
+}
+async function jget(path, signal){
+  const r = await fetch(SEVER+path,{signal}); if(!r.ok) throw new Error("HTTP "+r.status); return r.json();
+}
+
+async function checkHealth(){
+  const h=document.getElementById("health"), t=document.getElementById("healthtxt");
+  h.className="pill health wait"; t.textContent="waking service…";
+  try{
+    const j = await withTimeout(s=>jget("/health",s), 75000);
+    h.className="pill health"; t.textContent = "live · "+(j.xrpl_mode||"ok");
+    return true;
+  }catch(e){ h.className="pill health down"; t.textContent="unreachable from browser"; return false; }
+}
+
+/* run one step: returns the object to render */
+async function liveStep(s, ctx){
+  if(s.id==="bootstrap"){
+    const j = await withTimeout(sig=>jpost("/demo/bootstrap",null,sig),75000);
+    ctx.boot=j; return {root_did:j.root_did,worker_did:j.worker_did,leaf_link_id:j.leaf_link_id,escrow_id:j.escrow_id};
+  }
+  if(s.id==="delegate"){
+    const j = await withTimeout(sig=>jpost("/delegate",{issuer_did:ctx.boot.root_did,audience_did:ctx.boot.worker_did,
+      capabilities:[{resource:"task:translate/en-fr",action:"execute"}],parent_link_id:ctx.boot.leaf_link_id},sig),40000);
+    return {link_id:j.link_id,capabilities:j.capabilities};
+  }
+  if(s.id==="attest"){
+    const j = await withTimeout(sig=>jpost("/attest",{capability_link_id:ctx.boot.leaf_link_id,
+      task_spec_hash:ctx.boot.task_spec_hash,artifact:{rows:[[1,2],[3,4]],unit:"kg"}},sig),40000);
+    ctx.att=j; return {attestation_id:j.attestation_id,artifact_addr:j.artifact_addr,log:j.log};
+  }
+  if(s.id==="verify1"){
+    const j = await withTimeout(sig=>jpost("/verify",{attestation_id:ctx.att.attestation_id,escrow_id:ctx.boot.escrow_id},sig),60000);
+    ctx.allow=j; return {decision:j.decision,xrpl_tx_hash:j.xrpl_tx_hash,explorer_url:j.explorer_url};
+  }
+  if(s.id==="revoke"){
+    const j = await withTimeout(sig=>jpost("/revoke",{revoked_link_id:ctx.boot.leaf_link_id,revoker_did:ctx.boot.root_did},sig),40000);
+    return {revocation_id:j.revocation_id,revoked_link_id:j.revoked_link_id};
+  }
+  if(s.id==="verify2"){
+    const j = await withTimeout(sig=>jpost("/verify",{attestation_id:ctx.att.attestation_id,escrow_id:ctx.boot.escrow_id},sig),40000);
+    return {decision:j.decision,failure:j.failure};
+  }
+}
+
+/* ---------- render a step ---------- */
+function renderStep(s, obj, live){
+  const el=document.getElementById("step-"+s.id); el.classList.add("active");
+  const box=document.getElementById("resp-"+s.id); box.classList.remove("empty");
+  let html="";
+  if(s.allow) html+='<div class="verdict allow">✓ ALLOW · escrow released</div>';
+  if(s.reject) html+='<div class="verdict reject">✕ REJECT · settlement blocked</div>';
+  html+='<button class="copy" onclick="copyJSON(this)">copy</button>';
+  html+='<pre>'+syntax(obj)+'</pre>';
+  const exp = (s.explorer? (obj.explorer_url) : null);
+  if(exp) html+='<div class="explorer">↳ on the public ledger: <a href="'+exp+'" target="_blank" rel="noopener">'+exp+'</a></div>';
+  if(!live) html+='<div class="note">representative response — run the curl in DEMO-RECORDING-COMMANDS.md for a live one</div>';
+  box.innerHTML=html;
+  box.dataset.json=JSON.stringify(obj,null,2);
+  if(s.reject){ box.classList.add("reject-flash"); }
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function copyJSON(btn){
+  const box=btn.closest(".resp"); navigator.clipboard.writeText(box.dataset.json||"");
+  const o=btn.textContent; btn.textContent="copied"; setTimeout(()=>btn.textContent=o,1200);
+}
+
+/* ---------- orchestration ---------- */
+let running=false;
+async function run(){
+  if(running) return; running=true;
+  const btn=document.getElementById("runbtn"); btn.disabled=true;
+  reset(false);
+  const wantLive=document.getElementById("livetoggle").checked;
+  let live=false;
+  if(wantLive){ live=await checkHealth(); }
+  else{ document.getElementById("health").className="pill health"; document.getElementById("healthtxt").textContent="live checks off"; }
+  setMode(live);
+
+  const rep=repData(); const ctx={};
+  for(const s of STEPS){
+    await sleep(650);
+    let obj=null, stepLive=live;
+    if(live){
+      try{ obj=await liveStep(s,ctx); }
+      catch(e){ stepLive=false; live=false; setMode(false);
+        document.getElementById("health").className="pill health down";
+        document.getElementById("healthtxt").textContent="live call blocked — falling back"; }
+    }
+    if(!obj){ obj=s.pick(rep); stepLive=false; }
+    // pause for drama before the reject
+    if(s.reject) await sleep(900);
+    renderStep(s,obj,stepLive);
+  }
+  btn.disabled=false; running=false;
+}
+function setMode(live){
+  const m=document.getElementById("modebadge");
+  m.className="modebadge "+(live?"live":"rep");
+  m.textContent=live?"Live":"Representative";
+}
+function reset(clearHealth=true){
+  STEPS.forEach(s=>{
+    const el=document.getElementById("step-"+s.id); el.classList.remove("active");
+    const box=document.getElementById("resp-"+s.id);
+    box.className="resp empty"; box.innerHTML=""; box.removeAttribute("data-json");
+  });
+  if(clearHealth){ const h=document.getElementById("health"); h.className="pill health wait";
+    document.getElementById("healthtxt").textContent="not checked"; setMode(false); }
+}
+document.getElementById("runbtn").addEventListener("click",run);
+document.getElementById("resetbtn").addEventListener("click",()=>{ if(!running) reset(true); });
+</script>
+
+
+</body></html>
