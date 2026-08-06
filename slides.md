@@ -528,7 +528,7 @@ class: thank-you-slide
 
 <div class="thank-you-copy">
   <h1>Thank you</h1>
-  <div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> team</div>
+  <div class="subtitle">Ari Lerner and the <a href="https://gethologram.ai" id="href">Hologram</a> and <a href="https://uor.foundation">UOR</a> teams</div>
 
 ```typescript {none|1|2-5|6|7|all}
 import { kappa } from "@uor-foundation/uor-addr";
@@ -539,7 +539,6 @@ const label = kappa.jsonAddress(
 console.log(label);
 // sha256:8839aafda444d2c36d1b3f27d84ef287f6261975b1b6ddc9972054854b6920c1
 ```
-
 
 <div class="images">
     <div><img src="/assets/uor.svg" /></div>
