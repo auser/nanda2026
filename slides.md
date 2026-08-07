@@ -517,6 +517,8 @@ class: ofp-slide
 <div class="page-number">{{ String($page).padStart(2, '0') }}</div>
 
 <!--
+Overlaying NANDA's stack with serialization to see what we can unlock.
+
 This is where UOR and NANDA converge. UOR Foundation is the substrate, UOR Standards define the common rules, and the UOR-NANDA profile makes those rules interoperable across AgentFacts, Index, and A2A communication. UOR-DATAFACTS carries identity, freshness, and executable authorization. The data gateway is where that profile becomes a policy engine that can govern a real scenario. Thank you.
 -->
 
